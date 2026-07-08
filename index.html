@@ -250,6 +250,11 @@
   .form-input::placeholder{ color:rgba(255,255,255,0.25); }
 
   /* Portfolio */
+  .scrollbar-hide::-webkit-scrollbar{ display:none; }
+  .scrollbar-hide{ -ms-overflow-style:none; scrollbar-width:none; }
+
+  .portfolio-item{ position:relative; overflow:hidden; }
+  .portfolio-overlay{
   .portfolio-item{ position:relative; overflow:hidden; }
   .portfolio-overlay{
     position:absolute; inset:0;
@@ -261,7 +266,6 @@
   .portfolio-item:hover .portfolio-overlay{ opacity:1; }
   .portfolio-item img{ transition:transform 0.6s cubic-bezier(0.16,1,0.3,1); }
   .portfolio-item:hover img{ transform:scale(1.08); }
-  .logo-only, .photo-only{ display:none; }
 
   /* Testimonial */
   .testi-slide{ display:none; }
@@ -707,19 +711,20 @@
     <div class="text-center max-w-2xl mx-auto mb-10 reveal">
       <span class="font-mono text-xs tracking-[0.3em]" style="color:var(--gold)">OUR WORKS</span>
       <h2 class="font-fraunces italic text-3xl md:text-4xl text-white mt-4 mb-5">Selected Masterpieces</h2>
-      <p class="text-white/50">Setiap karya punya cerita tersendiri. Jelajahi hasil kerja kami dari berbagai divisi.</p>
+      <p class="text-white/50">Setiap karya punya cerita tersendiri. Jelajahi hasil kerja kami dari berbagai divisi. Geser ke kanan untuk melihat lebih banyak.</p>
     </div>
 
-    <div class="flex justify-center gap-3 mb-12 flex-wrap reveal">
+    <div class="flex justify-center gap-3 mb-10 flex-wrap reveal">
       <button class="filter-btn font-mono text-xs px-5 py-2.5 rounded-full active" data-filter="all" style="background:var(--gold); color:#0A0A0A" onclick="filterPortfolio('all', this)">ALL WORKS</button>
       <button class="filter-btn glass-card font-mono text-xs px-5 py-2.5 rounded-full text-white/40" data-filter="web" onclick="filterPortfolio('web', this)">WEB DEVELOPMENT</button>
       <button class="filter-btn glass-card font-mono text-xs px-5 py-2.5 rounded-full text-white/40" data-filter="logo" onclick="filterPortfolio('logo', this)">LOGO &amp; ID</button>
       <button class="filter-btn glass-card font-mono text-xs px-5 py-2.5 rounded-full text-white/40" data-filter="photo" onclick="filterPortfolio('photo', this)">PHOTOGRAPHY</button>
     </div>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="portfolio-grid">
+    <div class="flex gap-5 overflow-x-auto pb-6 snap-x snap-mandatory scrollbar-hide" id="portfolio-grid">
 
-      <div class="portfolio-item aspect-square rounded-xl glass-card" data-category="web">
+      <!-- WEB DEVELOPMENT -->
+      <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="web">
         <img src="porto-logo-5.png" alt="BM Portfolio Website" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
         <div class="portfolio-overlay">
           <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Webdesign</span>
@@ -729,27 +734,7 @@
         </div>
       </div>
 
-      <div class="portfolio-item aspect-square rounded-xl glass-card" data-category="logo">
-        <img src="porto-logo-1.png" alt="MTCRT.HQ Racing Team" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
-        <div class="portfolio-overlay">
-          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Visual</span>
-          <h4 class="font-syne text-white font-bold text-lg mt-1">MTCRT.HQ Racing Team</h4>
-          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Logo Design</p>
-          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('MTCRT.HQ Racing Team','BMF.Visual','Logo Design','https://instagram.com/bmf.visual','Lihat di Instagram')">LIHAT DETAIL</button>
-        </div>
-      </div>
-
-      <div class="portfolio-item aspect-square rounded-xl glass-card" data-category="photo">
-        <img src="porto-logo-4.png" alt="Brembo Wheel Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
-        <div class="portfolio-overlay">
-          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
-          <h4 class="font-syne text-white font-bold text-lg mt-1">Brembo Wheel Series</h4>
-          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Automotive Photography</p>
-          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Brembo Wheel Series','BMF.Automedia','Automotive Photography','https://instagram.com/bmf.automedia','Lihat di Instagram')">LIHAT DETAIL</button>
-        </div>
-      </div>
-
-      <div class="portfolio-item aspect-square rounded-xl glass-card" data-category="web">
+      <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="web">
         <img src="porto-logo-6.png" alt="Luxury Place Padang" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
         <div class="portfolio-overlay">
           <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Webdesign</span>
@@ -759,43 +744,125 @@
         </div>
       </div>
 
-      <div class="portfolio-item aspect-square rounded-xl glass-card" data-category="logo">
-        <img src="porto-logo-3.png" alt="Racing Illustration Art" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+      <!-- LOGO & ID -->
+      <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="logo">
+        <img src="portfolio/logo-mtcrthq.png" alt="MTCRT.HQ Racing Team" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
         <div class="portfolio-overlay">
           <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Visual</span>
-          <h4 class="font-syne text-white font-bold text-lg mt-1">Racing Illustration Art</h4>
-          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Visual Identity</p>
-          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Racing Illustration Art','BMF.Visual','Visual Identity','https://instagram.com/bmf.visual','Lihat di Instagram')">LIHAT DETAIL</button>
-        </div>
-      </div>
-
-      <div class="portfolio-item aspect-square rounded-xl glass-card" data-category="photo">
-        <img src="porto-logo-2.jpeg" alt="Toyota Fortuner Modified" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
-        <div class="portfolio-overlay">
-          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
-          <h4 class="font-syne text-white font-bold text-lg mt-1">Toyota Fortuner Modified</h4>
-          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Automotive Photography</p>
-          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Toyota Fortuner Modified','BMF.Automedia','Automotive Photography','https://instagram.com/bmf.automedia','Lihat di Instagram')">LIHAT DETAIL</button>
-        </div>
-      </div>
-
-      <div class="portfolio-item logo-only aspect-square rounded-xl glass-card" data-category="logo">
-        <img src="porto-logo-7.png" alt="BMR Dua Saudara" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
-        <div class="portfolio-overlay">
-          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Visual</span>
-          <h4 class="font-syne text-white font-bold text-lg mt-1">BMR Dua Saudara</h4>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">MTCRT.HQ Racing Team</h4>
           <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Logo Design</p>
-          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('BMR Dua Saudara','BMF.Visual','Logo Design','https://instagram.com/bmf.visual','Lihat di Instagram')">LIHAT DETAIL</button>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('MTCRT.HQ Racing Team','BMF.Visual','Logo Design','https://instagram.com/bmf.visual','Lihat di Instagram')">LIHAT DETAIL</button>
         </div>
       </div>
 
-      <div class="portfolio-item photo-only aspect-square rounded-xl glass-card" data-category="photo">
-        <img src="porto-logo-8.png" alt="Toyota Rush Turbo Modified" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+      <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="logo">
+        <img src="portfolio/logo-bmr-race.png" alt="BMR Race" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Visual</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">BMR Race</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Logo Design</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('BMR Race','BMF.Visual','Logo Design','https://instagram.com/bmf.visual','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="logo">
+        <img src="portfolio/logo-bmtech.png" alt="BM-Tech" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Visual</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">BM-Tech</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Logo Design</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('BM-Tech','BMF.Visual','Logo Design','https://instagram.com/bmf.visual','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="logo">
+        <img src="portfolio/logo-garasi76.png" alt="Garasi 76 Garage" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Visual</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">Garasi 76 Garage</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Logo Design</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Garasi 76 Garage','BMF.Visual','Logo Design','https://instagram.com/bmf.visual','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="logo">
+        <img src="portfolio/logo-tuayanmotor.png" alt="Tuayan Motor" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Visual</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">Tuayan Motor</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Logo Design</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Tuayan Motor','BMF.Visual','Logo Design','https://instagram.com/bmf.visual','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="logo">
+        <img src="portfolio/logo-n9be.png" alt="N9BE Garage" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Visual</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">N9BE Garage</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Logo Design</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('N9BE Garage','BMF.Visual','Logo Design','https://instagram.com/bmf.visual','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <!-- PHOTOGRAPHY -->
+      <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="photo">
+        <img src="portfolio/automotive-black-modified.jpg" alt="Black Modified Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
         <div class="portfolio-overlay">
           <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
-          <h4 class="font-syne text-white font-bold text-lg mt-1">Toyota Rush Turbo Modified</h4>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">Black Modified Series</h4>
           <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Automotive Photography</p>
-          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Toyota Rush Turbo Modified','BMF.Automedia','Automotive Photography','https://instagram.com/bmf.automedia','Lihat di Instagram')">LIHAT DETAIL</button>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Black Modified Series','BMF.Automedia','Automotive Photography','https://instagram.com/bmf.automedia','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="photo">
+        <img src="portfolio/automotive-white-modified.jpg" alt="White Modified Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">White Modified Series</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Automotive Photography</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('White Modified Series','BMF.Automedia','Automotive Photography','https://instagram.com/bmf.automedia','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="photo">
+        <img src="portfolio/automotive-pink-livery.jpg" alt="Pink Livery Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">Pink Livery Series</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Automotive Photography</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Pink Livery Series','BMF.Automedia','Automotive Photography','https://instagram.com/bmf.automedia','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="photo">
+        <img src="portfolio/automotive-wheel-closeup.jpg" alt="Wheel Closeup Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">Wheel Closeup Series</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Automotive Photography</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Wheel Closeup Series','BMF.Automedia','Automotive Photography','https://instagram.com/bmf.automedia','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="photo">
+        <img src="portfolio/automotive-blue-sedan.jpg" alt="Blue Sedan Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">Blue Sedan Series</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Automotive Photography</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Blue Sedan Series','BMF.Automedia','Automotive Photography','https://instagram.com/bmf.automedia','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="photo">
+        <img src="portfolio/automotive-boomber2gd.jpg" alt="Automotive Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">Automotive Series</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Automotive Photography</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Automotive Series','BMF.Automedia','Automotive Photography','https://instagram.com/bmf.automedia','Lihat di Instagram')">LIHAT DETAIL</button>
         </div>
       </div>
 
@@ -1098,14 +1165,10 @@
     const items = document.querySelectorAll('.portfolio-item');
     items.forEach(item => {
       const cat = item.getAttribute('data-category');
-      const isExtra = item.classList.contains('logo-only') || item.classList.contains('photo-only');
-
-      if (category === 'all') {
-        item.style.display = isExtra ? 'none' : '';
-      } else {
-        item.style.display = (cat === category) ? '' : 'none';
-      }
+      item.style.display = (category === 'all' || cat === category) ? '' : 'none';
     });
+
+    document.getElementById('portfolio-grid').scrollTo({ left: 0, behavior: 'instant' });
   }
 
   // ---------- Portfolio detail modal ----------
