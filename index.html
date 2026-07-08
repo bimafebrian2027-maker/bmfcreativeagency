@@ -51,6 +51,14 @@
     --footer:#050505;
   }
 
+  @font-face{
+    font-family:'Scaver-Regular';
+    src:url('Scaver-Regular.ttf') format('truetype');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+  }
+  
   *{ box-sizing:border-box; }
 
   html{ scroll-behavior:smooth; }
@@ -70,7 +78,7 @@
 
   .font-syne{ font-family:'Syne', sans-serif; }
   .font-fraunces{ font-family:'Fraunces', serif; }
-  .font-mono{ font-family:'Space Mono', monospace; }
+  .font-mono{ font-family:'Scaver-Regular', serif; }
   .font-outfit{ font-family:'Outfit', sans-serif; }
 
   /* Glassmorphism card */
@@ -104,7 +112,7 @@
     0%,100%{ opacity:1; } 50%{ opacity:0.55; }
   }
   .loading-sub{
-    font-family:'Space Mono', monospace;
+    font-family:'Scaver-Regular', serif;
     font-size:0.65rem;
     letter-spacing:0.35em;
     color:rgba(255,255,255,0.3);
@@ -297,6 +305,7 @@
     position:absolute; right:70px; top:50%; transform:translateY(-50%) translateX(6px);
     background:#0A0A0A; border:1px solid var(--gold-subtle);
     color:var(--gold-light); font-size:0.65rem; padding:6px 12px; border-radius:6px;
+    font-family:'Scaver-Regular', serif;
     white-space:nowrap; opacity:0; pointer-events:none; transition:all 0.3s ease;
   }
   #wa-float:hover #wa-tooltip{ opacity:1; transform:translateY(-50%) translateX(0); }
