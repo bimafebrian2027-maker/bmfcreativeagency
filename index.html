@@ -103,19 +103,24 @@
   #loading-screen.hide{ opacity:0; visibility:hidden; pointer-events:none; }
   .loading-title{
     font-family:'Syne', sans-serif; font-weight:800;
-    font-size:clamp(3rem,10vw,6rem);
-    color:var(--gold);
+    font-size:clamp(2.4rem,7vw,4.2rem);
     letter-spacing:0.05em;
-    animation:pulseFade 2s ease-in-out infinite;
+    background:linear-gradient(90deg, var(--gold) 30%, var(--gold-light) 50%, var(--gold) 70%);
+    background-size:250% 100%;
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+    animation:shimmerText 2.8s linear infinite;
   }
-  @keyframes pulseFade{
-    0%,100%{ opacity:1; } 50%{ opacity:0.55; }
+  @keyframes shimmerText{
+    0%{ background-position:200% 0; }
+    100%{ background-position:-200% 0; }
   }
   .loading-sub{
     font-family:'Scaver-Regular', serif;
-    font-size:0.65rem;
-    letter-spacing:0.35em;
-    color:rgba(255,255,255,0.3);
+    font-size:1rem;
+    letter-spacing:0.3em;
+    color:rgba(255,255,255,0.35);
     margin-top:0.75rem;
   }
   .loading-line{
