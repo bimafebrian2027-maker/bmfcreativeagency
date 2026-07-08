@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BMF.Creative Agency — Small Taste, Big Experiences</title>
+<meta name="description" content="BMF.Creative Agency — Ekosistem kreatif terpadu dari Padang & Sawahlunto, Sumatera Barat. Automedia, Visual, Webdesign, Photography, dan lebih banyak lagi.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400;1,9..144,500;1,9..144,600&family=Outfit:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+  tailwind.config = {
+    theme: {
+      extend: {
+        colors: {
+          'bg-primary': '#0A0A0A',
+          'bg-secondary': '#111111',
+          'bg-footer': '#050505',
+          'gold': '#B8952A',
+          'gold-light': '#D4AF5A',
+        },
+        fontFamily: {
+          'syne': ['Syne', 'sans-serif'],
+          'fraunces': ['Fraunces', 'serif'],
+          'outfit': ['Outfit', 'sans-serif'],
+          'mono': ['Space Mono', 'monospace'],
+        },
+      }
+    }
+  }
+</script>
+
+<style>
+  :root{
+    --bg-primary:#0A0A0A;
+    --bg-secondary:#111111;
+    --bg-card:rgba(255,255,255,0.03);
+    --card-border:rgba(255,255,255,0.08);
+    --gold:#B8952A;
+    --gold-light:#D4AF5A;
+    --gold-subtle:rgba(184,149,42,0.15);
+    --text-primary:#F5F5F5;
+    --text-secondary:rgba(255,255,255,0.45);
+    --text-muted:rgba(255,255,255,0.25);
+    --border-subtle:rgba(255,255,255,0.06);
+    --footer:#050505;
+  }
+
+  *{ box-sizing:border-box; }
+
+  html{ scroll-behavior:smooth; }
+
+  body{
+    background:var(--bg-primary);
+    color:var(--text-primary);
+    font-family:'Outfit', sans-serif;
+    overflow-x:hidden;
+  }
+
+  ::selection{ background:var(--gold-subtle); color:var(--gold-light); }
+
+  ::-webkit-scrollbar{ width:6px; }
+  ::-webkit-scrollbar-track{ background:var(--bg-primary); }
+  ::-webkit-scrollbar-thumb{ background:var(--gold); border-radius:4px; }
+
+  .font-syne{ font-family:'Syne', sans-serif; }
+  .font-fraunces{ font-family:'Fraunces', serif; }
+  .font-mono{ font-family:'Space Mono', monospace; }
+  .font-outfit{ font-family:'Outfit', sans-serif; }
+
+  /* Glassmorphism card */
+  .glass-card{
+    background:var(--bg-card);
+    border:1px solid var(--card-border);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    border-radius:12px;
+  }
+
+  .transition-smooth{ transition:all 0.4s cubic-bezier(0.16,1,0.3,1); }
+
+  /* Loading screen */
+  #loading-screen{
+    position:fixed; inset:0; z-index:9999;
+    background:#0A0A0A;
+    display:flex; align-items:center; justify-content:center;
+    flex-direction:column;
+    transition:opacity 0.9s ease, visibility 0.9s ease;
+  }
+  #loading-screen.hide{ opacity:0; visibility:hidden; pointer-events:none; }
+  .loading-title{
+    font-family:'Syne', sans-serif; font-weight:800;
+    font-size:clamp(3rem,10vw,6rem);
+    color:var(--gold);
+    letter-spacing:0.05em;
+    animation:pulseFade 2s ease-in-out infinite;
+  }
+  @keyframes pulseFade{
+    0%,100%{ opacity:1; } 50%{ opacity:0.55; }
+  }
+  .loading-sub{
+    font-family:'Space Mono', monospace;
+    font-size:0.65rem;
+    letter-spacing:0.35em;
+    color:rgba(255,255,255,0.3);
+    margin-top:0.75rem;
+  }
+  .loading-line{
+    width:120px; height:1px; margin-top:2rem;
+    background:linear-gradient(90deg, transparent, var(--gold), transparent);
+    background-size:200% 100%;
+    animation:shimmer 1.6s linear infinite;
+  }
+  @keyframes shimmer{
+    0%{ background-position:200% 0; } 100%{ background-position:-200% 0; }
+  }
+
+  /* Navbar */
+  #navbar{
+    background:rgba(10,10,10,0.85);
+    backdrop-filter:blur(10px);
+    -webkit-backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border-subtle);
+    transition:all 0.4s ease;
+  }
+  #navbar.scrolled{
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+    background:rgba(8,8,8,0.92);
+  }
+  .nav-link{
+    color:rgba(255,255,255,0.7);
+    position:relative;
+    transition:color 0.3s ease;
+  }
+  .nav-link::after{
+    content:''; position:absolute; left:0; bottom:-4px; width:0; height:1px;
+    background:var(--gold); transition:width 0.3s ease;
+  }
+  .nav-link:hover{ color:#fff; }
+  .nav-link:hover::after{ width:100%; }
+
+  .btn-gold-outline{
+    border:1px solid var(--gold);
+    color:var(--gold-light);
+    transition:all 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  .btn-gold-outline:hover{
+    background:var(--gold);
+    color:#0A0A0A;
+    box-shadow:0 0 24px rgba(184,149,42,0.35);
+  }
+  .btn-gold-solid{
+    background:linear-gradient(135deg, var(--gold-light), var(--gold));
+    color:#0A0A0A;
+    transition:all 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  .btn-gold-solid:hover{
+    box-shadow:0 0 30px rgba(184,149,42,0.45);
+    transform:translateY(-2px);
+  }
+
+  /* Hero */
+  .hero-glow{
+    position:absolute; inset:0;
+    background:radial-gradient(circle at 30% 40%, rgba(184,149,42,0.05), transparent 60%);
+    pointer-events:none;
+  }
+  .particle{
+    position:absolute; width:4px; height:4px; border-radius:50%;
+    background:var(--gold);
+    animation:pingSlow 4s cubic-bezier(0,0,0.2,1) infinite;
+  }
+  @keyframes pingSlow{
+    0%{ transform:scale(1); opacity:0.6; }
+    75%,100%{ transform:scale(3.5); opacity:0; }
+  }
+  .pulse-dot{
+    width:8px; height:8px; border-radius:50%;
+    background:#22c55e;
+    box-shadow:0 0 0 rgba(34,197,94,0.6);
+    animation:pulseDot 2s infinite;
+  }
+  @keyframes pulseDot{
+    0%{ box-shadow:0 0 0 0 rgba(34,197,94,0.5); }
+    70%{ box-shadow:0 0 0 8px rgba(34,197,94,0); }
+    100%{ box-shadow:0 0 0 0 rgba(34,197,94,0); }
+  }
+
+  .rotate-slow{ animation:rotateSlow 40s linear infinite; }
+  @keyframes rotateSlow{ from{ transform:rotate(0deg); } to{ transform:rotate(360deg); } }
+  .rotate-slow-rev{ animation:rotateSlowRev 55s linear infinite; }
+  @keyframes rotateSlowRev{ from{ transform:rotate(360deg); } to{ transform:rotate(0deg); } }
+
+  /* Scroll reveal */
+  .reveal{
+    opacity:0; transform:translateY(30px);
+    transition:opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1);
+  }
+  .reveal.in-view{ opacity:1; transform:translateY(0); }
+
+  /* Division cards */
+  .division-card{
+    transition:all 0.4s cubic-bezier(0.16,1,0.3,1);
+  }
+  .division-card:hover{
+    transform:translateY(-4px);
+  }
+
+  /* Divider */
+  .gold-divider{
+    width:48px; height:1px;
+    background:linear-gradient(90deg, var(--gold), transparent);
+  }
+  .gold-divider-center{
+    width:48px; height:1px; margin:0 auto;
+    background:var(--gold);
+  }
+
+  /* Form inputs */
+  .form-input{
+    background:var(--bg-card);
+    border:1px solid var(--card-border);
+    color:var(--text-primary);
+    transition:all 0.3s ease;
+  }
+  .form-input:focus{
+    outline:none;
+    border-color:var(--gold);
+    box-shadow:0 0 0 3px rgba(184,149,42,0.15);
+  }
+  .form-input::placeholder{ color:rgba(255,255,255,0.25); }
+
+  /* Portfolio */
+  .portfolio-item{ position:relative; overflow:hidden; }
+  .portfolio-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(180deg, rgba(10,10,10,0.2), rgba(10,10,10,0.95));
+    display:flex; flex-direction:column; justify-content:flex-end;
+    padding:1.25rem;
+    opacity:0; transition:opacity 0.4s ease;
+  }
+  .portfolio-item:hover .portfolio-overlay{ opacity:1; }
+  .portfolio-item img{ transition:transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+  .portfolio-item:hover img{ transform:scale(1.08); }
+  .logo-only, .photo-only{ display:none; }
+
+  /* Testimonial */
+  .testi-slide{ display:none; }
+  .testi-slide.active{ display:block; animation:fadeInUp 0.6s ease; }
+  @keyframes fadeInUp{ from{ opacity:0; transform:translateY(16px);} to{ opacity:1; transform:translateY(0);} }
+  .testi-dot{
+    width:8px; height:8px; border-radius:50%;
+    background:rgba(255,255,255,0.15);
+    transition:all 0.3s ease; cursor:pointer;
+  }
+  .testi-dot.active{ background:var(--gold); width:22px; border-radius:4px; }
+
+  /* Modal */
+  .modal-overlay{
+    position:fixed; inset:0; background:rgba(5,5,5,0.85);
+    backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
+    display:flex; align-items:center; justify-content:center;
+    z-index:1000; opacity:0; visibility:hidden; transition:all 0.35s ease;
+    padding:1rem;
+  }
+  .modal-overlay.open{ opacity:1; visibility:visible; }
+  .modal-box{
+    transform:scale(0.94) translateY(10px);
+    transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);
+  }
+  .modal-overlay.open .modal-box{ transform:scale(1) translateY(0); }
+
+  /* Mobile menu */
+  #mobile-menu{
+    max-height:0; overflow:hidden;
+    transition:max-height 0.4s ease;
+  }
+  #mobile-menu.open{ max-height:400px; }
+
+  /* WA floating button */
+  #wa-float{
+    position:fixed; bottom:1.75rem; right:1.75rem; z-index:500;
+    width:58px; height:58px; border-radius:50%;
+    background:linear-gradient(135deg, var(--gold-light), var(--gold));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow:0 4px 24px rgba(184,149,42,0.4);
+    transition:transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  #wa-float:hover{ transform:scale(1.12); }
+  #wa-tooltip{
+    position:absolute; right:70px; top:50%; transform:translateY(-50%) translateX(6px);
+    background:#0A0A0A; border:1px solid var(--gold-subtle);
+    color:var(--gold-light); font-size:0.65rem; padding:6px 12px; border-radius:6px;
+    white-space:nowrap; opacity:0; pointer-events:none; transition:all 0.3s ease;
+  }
+  #wa-float:hover #wa-tooltip{ opacity:1; transform:translateY(-50%) translateX(0); }
+
+  .tab-btn{ transition:all 0.35s ease; }
+  .service-panel{ display:none; }
+  .service-panel.active{ display:grid; animation:fadeInUp 0.5s ease; }
+
+  .div-dot{ width:10px; height:10px; border-radius:50%; }
+
+  img.img-fallback{ background:linear-gradient(135deg, rgba(184,149,42,0.15), rgba(255,255,255,0.03)); }
+
+  @media (prefers-reduced-motion: reduce){
+    *{ animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important; }
+  }
+</style>
+</head>
+<body class="antialiased">
+
+<!-- ================= LOADING SCREEN ================= -->
+<div id="loading-screen">
+  <div class="loading-title">BMF</div>
+  <div class="loading-sub">CREATIVE AGENCY</div>
+  <div class="loading-line"></div>
+</div>
+
+<!-- ================= NAVBAR ================= -->
+<nav id="navbar" class="fixed top-0 w-full z-40">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between h-16 md:h-20">
+    <a href="#home" class="font-syne font-bold text-xl tracking-wide">BMF<span style="color:var(--gold)">.Creative</span></a>
+
+    <div class="hidden lg:flex items-center gap-8 font-outfit text-sm">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#divisions" class="nav-link">Divisions</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#portfolio" class="nav-link">Portfolio</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </div>
+
+    <a href="#contact" class="hidden lg:inline-block btn-gold-outline font-mono text-xs px-5 py-2.5 rounded-full tracking-wider">GET STARTED</a>
+
+    <button id="hamburger" class="lg:hidden text-white text-xl" aria-label="Toggle menu">
+      <i class="fa-solid fa-bars"></i>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="lg:hidden border-t border-white/5">
+    <div class="flex flex-col px-5 py-4 gap-4 font-outfit text-sm bg-[#0A0A0A]/95">
+      <a href="#home" class="nav-link">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#divisions" class="nav-link">Divisions</a>
+      <a href="#services" class="nav-link">Services</a>
+      <a href="#portfolio" class="nav-link">Portfolio</a>
+      <a href="#contact" class="nav-link">Contact</a>
+      <a href="#contact" class="btn-gold-outline font-mono text-xs px-5 py-2.5 rounded-full text-center tracking-wider mt-1">GET STARTED</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<section id="home" class="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
+  <div class="hero-glow"></div>
+  <div class="particle" style="top:15%; left:8%; animation-delay:0s;"></div>
+  <div class="particle" style="top:30%; left:85%; animation-delay:0.8s;"></div>
+  <div class="particle" style="top:65%; left:12%; animation-delay:1.6s;"></div>
+  <div class="particle" style="top:75%; left:70%; animation-delay:2.4s;"></div>
+  <div class="particle" style="top:45%; left:50%; animation-delay:1.2s;"></div>
+  <div class="particle" style="top:20%; left:60%; animation-delay:3s;"></div>
+
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-12 items-center relative z-10 w-full">
+
+    <div class="reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <div class="pulse-dot"></div>
+        <span class="font-mono text-xs tracking-[0.3em]" style="color:var(--gold)">CREATIVE AGENCY</span>
+      </div>
+
+      <h1 class="font-syne font-extrabold leading-[0.95] mb-6" style="font-size:clamp(2.6rem,6.5vw,5rem)">
+        Small Taste,<br>
+        <span class="font-fraunces italic font-medium" style="color:var(--gold-light); font-size:1.05em;">Big Experiences</span>
+      </h1>
+
+      <p class="font-outfit text-white/50 max-w-md mb-9 leading-relaxed">
+        BMF.Creative adalah ekosistem kreatif terpadu dari Padang &amp; Sawahlunto — merangkul delapan divisi di bawah satu visi, mengubah ide kecil menjadi karya yang membekas.
+      </p>
+
+      <div class="flex flex-wrap gap-4 mb-16">
+        <a href="#about" class="btn-gold-solid font-mono text-xs px-7 py-3.5 rounded-full tracking-wider">ABOUT US</a>
+        <a href="#contact" class="btn-gold-outline font-mono text-xs px-7 py-3.5 rounded-full tracking-wider">CONTACT</a>
+      </div>
+
+      <div class="font-mono text-[0.65rem] text-white/20 leading-relaxed">
+        <p>0.9382° S, 100.3541° E</p>
+        <p class="tracking-wider">PADANG &amp; SAWAHLUNTO, ID</p>
+      </div>
+    </div>
+
+    <div class="hidden lg:flex relative items-center justify-center reveal">
+      <div class="relative w-[380px] h-[380px] flex items-center justify-center">
+        <div class="absolute inset-0 rounded-full border border-gold/25 rotate-slow"></div>
+        <div class="absolute inset-10 border border-gold/20 rotate-slow-rev" style="transform:rotate(45deg);"></div>
+        <div class="absolute w-48 h-48 rounded-full glass-card flex items-center justify-center">
+          <span class="font-syne font-bold text-2xl text-white">BMF</span>
+        </div>
+        <img src="BMF_LOGO.png" alt="BMF Creative Logo" class="w-[300px] object-contain absolute opacity-0" onerror="this.style.display='none'">
+      </div>
+      <div class="absolute bottom-0 right-0 text-right font-mono text-[0.65rem] text-white/20 leading-relaxed">
+        <p>EST. 2024</p>
+        <p>WEST SUMATERA</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ABOUT / FOUNDER STORY ================= -->
+<section id="about" class="py-24 md:py-32" style="background:var(--bg-secondary)">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-14 items-center">
+
+    <div class="reveal">
+      <div class="relative rounded-2xl overflow-hidden border" style="border-color:rgba(184,149,42,0.2)">
+        <div class="aspect-[3/4] w-full relative">
+          <img src="foto-founder.jpeg" alt="Bima Febrian — Founder & CEO" class="w-full h-full object-cover img-fallback" onerror="this.classList.add('img-fallback')">
+          <div class="absolute inset-0" style="background:linear-gradient(180deg, transparent 40%, rgba(10,10,10,0.92) 100%)"></div>
+          <div class="absolute bottom-0 left-0 p-6 md:p-8">
+            <h3 class="font-syne font-bold text-white text-2xl md:text-3xl mb-3">Bima Febrian</h3>
+            <div class="gold-divider mb-3"></div>
+            <p class="font-mono text-white/50 text-xs mb-4">Founder &amp; CEO</p>
+            <a href="https://instagram.com/_bima.febriann" target="_blank" rel="noopener" class="inline-flex items-center gap-2 btn-gold-outline font-mono text-xs px-4 py-2 rounded-full">
+              <i class="fa-brands fa-instagram"></i> @_bima.febriann
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal">
+      <span class="font-mono text-xs tracking-[0.3em]" style="color:var(--gold)">FOUNDER STORY</span>
+      <h2 class="font-fraunces italic text-3xl md:text-4xl text-white mt-4 mb-6 leading-tight">
+        Dari Keberanian dan Langkah Kecil Menuju Solusi Kreatif Bagi Banyak Orang.
+      </h2>
+      <p class="text-white/60 leading-relaxed mb-4">
+        Berawal dari hobi mengedit dan memotret sejak duduk di bangku SMP di Sawahlunto, Bima Febrian menemukan kegembiraan sederhana dalam menyusun visual — sebuah "small taste" yang terus dipupuk dari tahun ke tahun tanpa banyak diketahui orang.
+      </p>
+      <p class="text-white/60 leading-relaxed mb-10">
+        Keberanian untuk mengubah hobi menjadi tanggung jawab itulah yang melahirkan BMF.Creative pada 2024 — bukan sekadar agensi, melainkan ekosistem yang menaungi delapan divisi kreatif, dirancang untuk menjadi solusi satu pintu bagi brand dan individu di Sumatera Barat dan sekitarnya.
+      </p>
+
+      <div class="grid grid-cols-3 gap-4">
+        <div class="glass-card p-5 text-center">
+          <p class="font-syne font-bold text-2xl md:text-3xl" style="color:var(--gold)">2024</p>
+          <p class="font-mono text-[0.6rem] text-white/30 tracking-wider mt-2">EST. FOUNDED</p>
+        </div>
+        <div class="glass-card p-5 text-center">
+          <p class="font-syne font-bold text-2xl md:text-3xl" style="color:var(--gold)">8</p>
+          <p class="font-mono text-[0.6rem] text-white/30 tracking-wider mt-2">DIVISIONS</p>
+        </div>
+        <div class="glass-card p-5 text-center">
+          <p class="font-syne font-bold text-2xl md:text-3xl" style="color:var(--gold)">100%</p>
+          <p class="font-mono text-[0.6rem] text-white/30 tracking-wider mt-2">PASSION DRIVEN</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= DIVISIONS ================= -->
+<section id="divisions" class="py-24 md:py-32" style="background:var(--bg-primary)">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-16 reveal">
+      <span class="font-mono text-xs tracking-[0.3em]" style="color:var(--gold)">INTEGRATED SYSTEM</span>
+      <h2 class="font-fraunces italic text-3xl md:text-4xl text-white mt-4 mb-5">Our Creative Ecosystem</h2>
+      <div class="gold-divider-center mb-5"></div>
+      <p class="text-white/50">Delapan divisi, satu visi — setiap unit dirancang untuk saling melengkapi dalam melayani kebutuhan kreatif Anda secara menyeluruh.</p>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-5">
+
+      <!-- 1 BMF.Creative -->
+      <div class="glass-card division-card p-6 flex gap-5" style="border-left:3px solid #B8952A" onmouseover="this.style.boxShadow='0 0 20px rgba(184,149,42,0.2)'" onmouseout="this.style.boxShadow='none'">
+        <div class="flex-shrink-0 flex items-start pt-1"><i class="fa-solid fa-compass-drafting text-2xl" style="color:#B8952A"></i></div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-syne font-bold text-white">BMF.Creative</h3>
+            <span class="font-mono text-[0.6rem] px-2.5 py-1 rounded-full" style="background:rgba(184,149,42,0.1); color:#D4AF5A">ACTIVE</span>
+          </div>
+          <p class="text-white/50 text-xs leading-relaxed mb-2">Induk creative agency yang menjadi fondasi, menyelaraskan, dan mengatur seluruh ekosistem bisnis kreatif BMF. Kami hadir sebagai solusi satu pintu untuk semua kebutuhan kreatif brand dan bisnis Anda.</p>
+          <span class="font-mono text-xs" style="color:rgba(184,149,42,0.7)">@bmfcreative.id</span>
+        </div>
+      </div>
+
+      <!-- 2 Automedia -->
+      <div class="glass-card division-card p-6 flex gap-5" style="border-left:3px solid #9B2335" onmouseover="this.style.boxShadow='0 0 20px rgba(155,35,53,0.2)'" onmouseout="this.style.boxShadow='none'">
+        <div class="flex-shrink-0 flex items-start pt-1"><i class="fa-solid fa-car text-2xl" style="color:#9B2335"></i></div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-syne font-bold text-white">BMF Automedia</h3>
+            <span class="font-mono text-[0.6rem] px-2.5 py-1 rounded-full" style="background:rgba(184,149,42,0.1); color:#D4AF5A">ACTIVE</span>
+          </div>
+          <p class="text-white/50 text-xs leading-relaxed mb-2">Penyedia jasa foto profesional di bidang otomotif dan event bergengsi. Kami mengabadikan setiap momen dengan sudut pandang sinematik yang dramatis dan berkualitas tinggi.</p>
+          <span class="font-mono text-xs" style="color:rgba(184,149,42,0.7)">@bmf.automedia</span>
+        </div>
+      </div>
+
+      <!-- 3 Visual -->
+      <div class="glass-card division-card p-6 flex gap-5" style="border-left:3px solid #5B3F8C" onmouseover="this.style.boxShadow='0 0 20px rgba(91,63,140,0.2)'" onmouseout="this.style.boxShadow='none'">
+        <div class="flex-shrink-0 flex items-start pt-1"><i class="fa-solid fa-bezier-curve text-2xl" style="color:#5B3F8C"></i></div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-syne font-bold text-white">BMF Visual</h3>
+            <span class="font-mono text-[0.6rem] px-2.5 py-1 rounded-full" style="background:rgba(184,149,42,0.1); color:#D4AF5A">ACTIVE</span>
+          </div>
+          <p class="text-white/50 text-xs leading-relaxed mb-2">Melayani jasa pembuatan desain logo berkualitas serta perancangan visual identity profesional. Kami membantu brand Anda tampil kuat, berkarakter, dan mudah diingat oleh target pasar.</p>
+          <span class="font-mono text-xs" style="color:rgba(184,149,42,0.7)">@bmf.visual</span>
+        </div>
+      </div>
+
+      <!-- 4 Webdesign -->
+      <div class="glass-card division-card p-6 flex gap-5" style="border-left:3px solid #C0392B" onmouseover="this.style.boxShadow='0 0 20px rgba(192,57,43,0.2)'" onmouseout="this.style.boxShadow='none'">
+        <div class="flex-shrink-0 flex items-start pt-1"><i class="fa-solid fa-laptop-code text-2xl" style="color:#C0392B"></i></div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-syne font-bold text-white">BMF Webdesign</h3>
+            <span class="font-mono text-[0.6rem] px-2.5 py-1 rounded-full" style="background:rgba(184,149,42,0.1); color:#D4AF5A">ACTIVE</span>
+          </div>
+          <p class="text-white/50 text-xs leading-relaxed mb-2">Layanan desain website yang interaktif, modern, dan responsif untuk meningkatkan kredibilitas digital bisnis maupun portofolio pribadi Anda di era digital yang terus berkembang.</p>
+          <span class="font-mono text-xs" style="color:rgba(184,149,42,0.7)">@bmf.webdesign</span>
+        </div>
+      </div>
+
+      <!-- 5 Photography -->
+      <div class="glass-card division-card p-6 flex gap-5" style="border-left:3px solid #4A5568" onmouseover="this.style.boxShadow='0 0 20px rgba(74,85,104,0.2)'" onmouseout="this.style.boxShadow='none'">
+        <div class="flex-shrink-0 flex items-start pt-1"><i class="fa-solid fa-camera-retro text-2xl" style="color:#4A5568"></i></div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-syne font-bold text-white">BMF Photography</h3>
+            <span class="font-mono text-[0.6rem] px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.3)">COMING SOON</span>
+          </div>
+          <p class="text-white/50 text-xs leading-relaxed mb-2">Menyajikan dokumentasi momen pernikahan, lamaran, dan perayaan berkelas lainnya dengan sentuhan artistik yang hangat, natural, dan penuh makna yang tak terlupakan.</p>
+          <span class="font-mono text-xs" style="color:rgba(184,149,42,0.7)">@bmf.photograph</span>
+        </div>
+      </div>
+
+      <!-- 6 Photostudio -->
+      <div class="glass-card division-card p-6 flex gap-5" style="border-left:3px solid #B76E79" onmouseover="this.style.boxShadow='0 0 20px rgba(183,110,121,0.2)'" onmouseout="this.style.boxShadow='none'">
+        <div class="flex-shrink-0 flex items-start pt-1"><i class="fa-solid fa-lightbulb text-2xl" style="color:#B76E79"></i></div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-syne font-bold text-white">BMF Photostudio</h3>
+            <span class="font-mono text-[0.6rem] px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.3)">COMING SOON</span>
+          </div>
+          <p class="text-white/50 text-xs leading-relaxed mb-2">Layanan studio foto profesional berfasilitas lengkap untuk kebutuhan potret korporat, produk, konten kreator, hingga foto keluarga dengan hasil berkualitas premium.</p>
+          <span class="font-mono text-xs" style="color:rgba(184,149,42,0.7)">@bmf.photostudio</span>
+        </div>
+      </div>
+
+      <!-- 7 Graduate -->
+      <div class="glass-card division-card p-6 flex gap-5" style="border-left:3px solid #B7410E" onmouseover="this.style.boxShadow='0 0 20px rgba(183,65,14,0.2)'" onmouseout="this.style.boxShadow='none'">
+        <div class="flex-shrink-0 flex items-start pt-1"><i class="fa-solid fa-graduation-cap text-2xl" style="color:#B7410E"></i></div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-syne font-bold text-white">BMF Graduate</h3>
+            <span class="font-mono text-[0.6rem] px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.3)">COMING SOON</span>
+          </div>
+          <p class="text-white/50 text-xs leading-relaxed mb-2">Spesialis dokumentasi wisuda pribadi maupun rombongan yang mengabadikan setiap pencapaian penting dalam perjalanan pendidikan Anda dengan hasil foto yang elegan dan berkesan.</p>
+          <span class="font-mono text-xs" style="color:rgba(184,149,42,0.7)">@bmf.graduatephotograph</span>
+        </div>
+      </div>
+
+      <!-- 8 Clothes -->
+      <div class="glass-card division-card p-6 flex gap-5" style="border-left:3px solid rgba(255,255,255,0.4)" onmouseover="this.style.boxShadow='0 0 20px rgba(255,255,255,0.15)'" onmouseout="this.style.boxShadow='none'">
+        <div class="flex-shrink-0 flex items-start pt-1"><i class="fa-solid fa-shirt text-2xl" style="color:rgba(255,255,255,0.4)"></i></div>
+        <div class="flex-1">
+          <div class="flex items-center justify-between mb-2">
+            <h3 class="font-syne font-bold text-white">BMClothes</h3>
+            <span class="font-mono text-[0.6rem] px-2.5 py-1 rounded-full" style="background:rgba(255,255,255,0.05); color:rgba(255,255,255,0.3)">COMING SOON</span>
+          </div>
+          <p class="text-white/50 text-xs leading-relaxed mb-2">Wadah produk fashion orisinal buatan pribadi dengan kualitas katun premium, desain grafis yang unik, berkarakter kuat, dan setiap produknya menyimpan makna yang mendalam.</p>
+          <span class="font-mono text-xs" style="color:rgba(184,149,42,0.7)">@bmclothes.id</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES & PRICING ================= -->
+<section id="services" class="py-24 md:py-32" style="background:var(--bg-secondary)">
+  <div class="max-w-6xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-12 reveal">
+      <span class="font-mono text-xs tracking-[0.3em]" style="color:var(--gold)">PRICE OF THE LIST</span>
+      <h2 class="font-fraunces italic text-3xl md:text-4xl text-white mt-4 mb-5">Services &amp; Packages</h2>
+      <p class="text-white/50">Pilih divisi untuk melihat paket layanan yang tersedia, disesuaikan dengan kebutuhan dan bujet Anda.</p>
+    </div>
+
+    <div class="flex justify-center gap-3 mb-12 flex-wrap reveal">
+      <button class="tab-btn font-mono text-xs px-6 py-2.5 rounded-full active" data-tab="automedia" style="background:var(--gold); color:#0A0A0A" onclick="switchTab('automedia', this)">AUTOMEDIA</button>
+      <button class="tab-btn glass-card font-mono text-xs px-6 py-2.5 rounded-full text-white/40" data-tab="visual" onclick="switchTab('visual', this)">VISUAL</button>
+      <button class="tab-btn glass-card font-mono text-xs px-6 py-2.5 rounded-full text-white/40" data-tab="webdesign" onclick="switchTab('webdesign', this)">WEBDESIGN</button>
+    </div>
+
+    <!-- AUTOMEDIA -->
+    <div class="service-panel active grid md:grid-cols-2 gap-6" id="panel-automedia">
+      <div class="glass-card p-8 text-center">
+        <h3 class="font-syne font-bold text-white text-lg mb-3">Foto Event Otomotif</h3>
+        <p class="font-syne font-bold text-2xl mb-4" style="color:var(--gold)">Coming Soon</p>
+        <p class="text-white/40 text-sm">Detail paket akan segera hadir. Hubungi kami untuk informasi lebih lanjut.</p>
+      </div>
+      <div class="glass-card p-8 text-center">
+        <h3 class="font-syne font-bold text-white text-lg mb-3">Edit &amp; Deliver</h3>
+        <p class="font-syne font-bold text-2xl mb-4" style="color:var(--gold)">Coming Soon</p>
+        <p class="text-white/40 text-sm">Detail paket akan segera hadir. Hubungi kami untuk informasi lebih lanjut.</p>
+      </div>
+    </div>
+
+    <!-- VISUAL -->
+    <div class="service-panel grid md:grid-cols-3 gap-6" id="panel-visual">
+      <div class="glass-card p-8">
+        <h3 class="font-syne font-bold text-white text-lg mb-2">Basic Package</h3>
+        <p class="font-syne font-bold text-3xl mb-5" style="color:var(--gold)">Rp50K</p>
+        <ul class="text-white/60 text-sm space-y-2.5">
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>1–2 konsep desain</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>3x revisi</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>Format PNG/JPG</li>
+          <li><i class="fa-solid fa-xmark text-xs mr-2 text-white/20"></i><span class="text-white/30">Tanpa file vector</span></li>
+        </ul>
+      </div>
+      <div class="glass-card p-8 relative" style="border-color:var(--gold)">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 font-mono text-[0.6rem] px-3 py-1 rounded-full" style="background:var(--gold); color:#0A0A0A">RECOMMENDED</span>
+        <h3 class="font-syne font-bold text-white text-lg mb-2 mt-1">Standard Package</h3>
+        <p class="font-syne font-bold text-2xl mb-5" style="color:var(--gold)">Rp50K–100K</p>
+        <ul class="text-white/60 text-sm space-y-2.5">
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>3–5 konsep desain</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>Mockup presentasi</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>6x revisi</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>File master</li>
+        </ul>
+      </div>
+      <div class="glass-card p-8">
+        <h3 class="font-syne font-bold text-white text-lg mb-2">Premium Package</h3>
+        <p class="font-syne font-bold text-2xl mb-5" style="color:var(--gold)">Rp100K–200K</p>
+        <ul class="text-white/60 text-sm space-y-2.5">
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>6–10 konsep desain</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>Full mockup presentasi</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>Unlimited revisi</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>AI/SVG/PDF/EPS</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- WEBDESIGN -->
+    <div class="service-panel grid md:grid-cols-3 gap-6" id="panel-webdesign">
+      <div class="glass-card p-8">
+        <h3 class="font-syne font-bold text-white text-lg mb-2">Starter Web</h3>
+        <p class="font-syne font-bold text-2xl mb-5" style="color:var(--gold)">Rp300K</p>
+        <ul class="text-white/60 text-sm space-y-2.5">
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>1–5 halaman</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>Desain responsif</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>Integrasi medsos &amp; WA</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>2–5x revisi</li>
+          <li class="text-white/30 text-xs pt-2 border-t border-white/5 mt-3">+Rp50K untuk source file</li>
+        </ul>
+      </div>
+      <div class="glass-card p-8 relative" style="border-color:var(--gold)">
+        <span class="absolute -top-3 left-1/2 -translate-x-1/2 font-mono text-[0.6rem] px-3 py-1 rounded-full" style="background:var(--gold); color:#0A0A0A">MOST POPULAR</span>
+        <h3 class="font-syne font-bold text-white text-lg mb-2 mt-1">Standard Web</h3>
+        <p class="font-syne font-bold text-2xl mb-5" style="color:var(--gold)">Rp500K</p>
+        <ul class="text-white/60 text-sm space-y-2.5">
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>Maks. 10 halaman</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>Form kontak fungsional</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>Struktur lebih kompleks</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>6–12x revisi</li>
+          <li class="text-white/30 text-xs pt-2 border-t border-white/5 mt-3">+Rp50K untuk source file</li>
+        </ul>
+      </div>
+      <div class="glass-card p-8">
+        <h3 class="font-syne font-bold text-white text-lg mb-2">Premium Web</h3>
+        <p class="font-syne font-bold text-2xl mb-5" style="color:var(--gold)">Rp1Jt+</p>
+        <ul class="text-white/60 text-sm space-y-2.5">
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>Multi-halaman</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>Fitur e-commerce</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>Optimasi SEO</li>
+          <li><i class="fa-solid fa-check text-xs mr-2" style="color:var(--gold)"></i>Unlimited revisi</li>
+          <li class="text-white/30 text-xs pt-2 border-t border-white/5 mt-3">+Rp50K untuk source file</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PORTFOLIO ================= -->
+<section id="portfolio" class="py-24 md:py-32" style="background:var(--bg-primary)">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-10 reveal">
+      <span class="font-mono text-xs tracking-[0.3em]" style="color:var(--gold)">OUR WORKS</span>
+      <h2 class="font-fraunces italic text-3xl md:text-4xl text-white mt-4 mb-5">Selected Masterpieces</h2>
+      <p class="text-white/50">Setiap karya punya cerita tersendiri. Jelajahi hasil kerja kami dari berbagai divisi.</p>
+    </div>
+
+    <div class="flex justify-center gap-3 mb-12 flex-wrap reveal">
+      <button class="filter-btn font-mono text-xs px-5 py-2.5 rounded-full active" data-filter="all" style="background:var(--gold); color:#0A0A0A" onclick="filterPortfolio('all', this)">ALL WORKS</button>
+      <button class="filter-btn glass-card font-mono text-xs px-5 py-2.5 rounded-full text-white/40" data-filter="web" onclick="filterPortfolio('web', this)">WEB DEVELOPMENT</button>
+      <button class="filter-btn glass-card font-mono text-xs px-5 py-2.5 rounded-full text-white/40" data-filter="logo" onclick="filterPortfolio('logo', this)">LOGO &amp; ID</button>
+      <button class="filter-btn glass-card font-mono text-xs px-5 py-2.5 rounded-full text-white/40" data-filter="photo" onclick="filterPortfolio('photo', this)">PHOTOGRAPHY</button>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5" id="portfolio-grid">
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card" data-category="web">
+        <img src="porto-logo-5.png" alt="BM Portfolio Website" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Webdesign</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">BM Portfolio Website</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Portofolio Profile Website</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('BM Portfolio Website','BMF.Webdesign','Portofolio Profile Website','https://bimafebrian2027-maker.github.io/bimafebrian.github.io/','Kunjungi Website')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card" data-category="logo">
+        <img src="porto-logo-1.png" alt="MTCRT.HQ Racing Team" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Visual</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">MTCRT.HQ Racing Team</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Logo Design</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('MTCRT.HQ Racing Team','BMF.Visual','Logo Design','https://instagram.com/bmf.visual','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card" data-category="photo">
+        <img src="porto-logo-4.png" alt="Brembo Wheel Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">Brembo Wheel Series</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Automotive Photography</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Brembo Wheel Series','BMF.Automedia','Automotive Photography','https://instagram.com/bmf.automedia','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card" data-category="web">
+        <img src="porto-logo-6.png" alt="Luxury Place Padang" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Webdesign</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">Luxury Place Padang</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Company Property Website</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Luxury Place Padang','BMF.Webdesign','Company Property Website','https://luxurycoffepadangresidence.vercel.app/','Kunjungi Website')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card" data-category="logo">
+        <img src="porto-logo-3.png" alt="Racing Illustration Art" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Visual</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">Racing Illustration Art</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Visual Identity</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Racing Illustration Art','BMF.Visual','Visual Identity','https://instagram.com/bmf.visual','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item aspect-square rounded-xl glass-card" data-category="photo">
+        <img src="porto-logo-2.jpeg" alt="Toyota Fortuner Modified" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">Toyota Fortuner Modified</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Automotive Photography</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Toyota Fortuner Modified','BMF.Automedia','Automotive Photography','https://instagram.com/bmf.automedia','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item logo-only aspect-square rounded-xl glass-card" data-category="logo">
+        <img src="porto-logo-7.png" alt="BMR Dua Saudara" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Visual</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">BMR Dua Saudara</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Logo Design</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('BMR Dua Saudara','BMF.Visual','Logo Design','https://instagram.com/bmf.visual','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+      <div class="portfolio-item photo-only aspect-square rounded-xl glass-card" data-category="photo">
+        <img src="porto-logo-8.png" alt="Toyota Rush Turbo Modified" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <div class="portfolio-overlay">
+          <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
+          <h4 class="font-syne text-white font-bold text-lg mt-1">Toyota Rush Turbo Modified</h4>
+          <p class="font-outfit text-xs text-white/60 mt-1 mb-3">Automotive Photography</p>
+          <button class="btn-gold-outline font-mono text-[0.65rem] px-4 py-2 rounded-full self-start" onclick="openProjectModal('Toyota Rush Turbo Modified','BMF.Automedia','Automotive Photography','https://instagram.com/bmf.automedia','Lihat di Instagram')">LIHAT DETAIL</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= TESTIMONIALS ================= -->
+<section class="py-24 md:py-32 relative overflow-hidden" style="background:var(--bg-secondary)">
+  <div class="font-fraunces absolute -top-4 left-4 md:left-12 text-[10rem] md:text-[16rem]" style="color:rgba(184,149,42,0.08); line-height:1;">"</div>
+
+  <div class="max-w-3xl mx-auto px-5 md:px-8 relative z-10 text-center reveal">
+    <span class="font-mono text-xs tracking-[0.3em]" style="color:var(--gold)">TESTIMONIALS</span>
+    <h2 class="font-fraunces italic text-3xl md:text-4xl text-white mt-4 mb-12">What Clients Say</h2>
+
+    <div id="testi-wrapper">
+      <div class="testi-slide active">
+        <div class="flex justify-center gap-1 mb-6">
+          <i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i>
+        </div>
+        <p class="font-fraunces italic text-white/80 text-xl md:text-2xl leading-relaxed mb-8">Prosesnya cepat dan hasil desain logo dari BMF Visual benar-benar merepresentasikan karakter brand kami — komunikasi selama pengerjaan juga sangat responsif.</p>
+        <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">RIZKY ADITYA</p>
+        <p class="font-outfit text-white/40 text-xs mt-1">Owner, MTCRT.HQ Racing Team</p>
+      </div>
+
+      <div class="testi-slide">
+        <div class="flex justify-center gap-1 mb-6">
+          <i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i>
+        </div>
+        <p class="font-fraunces italic text-white/80 text-xl md:text-2xl leading-relaxed mb-8">Tim BMF Webdesign membangun website perusahaan kami dengan tampilan premium dan navigasi yang jelas — sekarang jauh lebih mudah menjelaskan bisnis ke calon klien.</p>
+        <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">HENDRA WIJAYA</p>
+        <p class="font-outfit text-white/40 text-xs mt-1">Direktur, Luxury Place Padang</p>
+      </div>
+
+      <div class="testi-slide">
+        <div class="flex justify-center gap-1 mb-6">
+          <i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i>
+        </div>
+        <p class="font-fraunces italic text-white/80 text-xl md:text-2xl leading-relaxed mb-8">Hasil foto dari BMF Automedia sangat sinematik — setiap detail modifikasi kendaraan kami tertangkap dengan pencahayaan yang dramatis dan profesional.</p>
+        <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">FARHAN NUGROHO</p>
+        <p class="font-outfit text-white/40 text-xs mt-1">Komunitas Otomotif Padang</p>
+      </div>
+    </div>
+
+    <div class="flex justify-center gap-2 mt-10" id="testi-dots">
+      <div class="testi-dot active" onclick="goToTesti(0)"></div>
+      <div class="testi-dot" onclick="goToTesti(1)"></div>
+      <div class="testi-dot" onclick="goToTesti(2)"></div>
+    </div>
+
+    <p class="font-outfit text-xs text-white/40 mt-12">Pernah menggunakan layanan kami?</p>
+    <a href="https://forms.gle/m1LHao2rJjB6qiSx6" target="_blank" rel="noopener" class="inline-block btn-gold-outline font-mono text-xs px-6 py-3 rounded-full mt-4 tracking-wider">BERIKAN TESTIMONI</a>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="py-24 md:py-32" style="background:var(--bg-primary)">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-12">
+
+    <div class="glass-card p-8 md:p-10 reveal">
+      <span class="font-mono text-xs tracking-[0.3em]" style="color:var(--gold)">START YOUR PROJECT</span>
+      <h2 class="font-fraunces italic text-2xl md:text-3xl text-white mt-4 mb-8">Ayo Mulai Berkarya!</h2>
+
+      <form id="contact-form" class="space-y-5">
+        <div>
+          <label class="font-mono text-[0.65rem] text-white/40 tracking-wider mb-2 block">NAMA LENGKAP</label>
+          <input type="text" required class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="Nama Anda">
+        </div>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="font-mono text-[0.65rem] text-white/40 tracking-wider mb-2 block">EMAIL</label>
+            <input type="email" required class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="email@domain.com">
+          </div>
+          <div>
+            <label class="font-mono text-[0.65rem] text-white/40 tracking-wider mb-2 block">WHATSAPP</label>
+            <input type="tel" required class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="08xx-xxxx-xxxx">
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="font-mono text-[0.65rem] text-white/40 tracking-wider mb-2 block">PILIH LAYANAN</label>
+            <select class="form-input w-full rounded-lg px-4 py-3 text-sm">
+              <option>Automedia</option>
+              <option>Visual</option>
+              <option>Webdesign</option>
+              <option>Lainnya</option>
+            </select>
+          </div>
+          <div>
+            <label class="font-mono text-[0.65rem] text-white/40 tracking-wider mb-2 block">PERKIRAAN BUDGET</label>
+            <select class="form-input w-full rounded-lg px-4 py-3 text-sm">
+              <option>&lt; Rp100rb</option>
+              <option>Rp100rb – 500rb</option>
+              <option>Rp500rb – 2jt</option>
+              <option>&gt; Rp2jt</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <label class="font-mono text-[0.65rem] text-white/40 tracking-wider mb-2 block">PESAN</label>
+          <textarea rows="4" required class="form-input w-full rounded-lg px-4 py-3 text-sm resize-none" placeholder="Ceritakan kebutuhan proyek Anda..."></textarea>
+        </div>
+        <button type="submit" class="btn-gold-solid font-mono text-xs w-full py-4 rounded-lg tracking-wider">KIRIM PENAWARAN</button>
+      </form>
+    </div>
+
+    <div class="reveal">
+      <span class="font-mono text-xs tracking-[0.3em]" style="color:var(--gold)">OFFICE CHANNELS</span>
+      <h2 class="font-fraunces italic text-2xl md:text-3xl text-white mt-4 mb-5">Hubungi Kami Langsung</h2>
+      <p class="text-white/50 mb-10 leading-relaxed">Kami siap membantu mewujudkan kebutuhan kreatif Anda. Hubungi kami melalui saluran berikut, atau kunjungi studio kami di Padang &amp; Sawahlunto.</p>
+
+      <div class="space-y-5 mb-12">
+        <div class="flex items-center gap-4">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(184,149,42,0.12)">
+            <i class="fa-solid fa-location-dot" style="color:var(--gold)"></i>
+          </div>
+          <div>
+            <p class="text-white text-sm">Padang &amp; Sawahlunto, Sumatera Barat, Indonesia</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(184,149,42,0.12)">
+            <i class="fa-solid fa-envelope" style="color:var(--gold)"></i>
+          </div>
+          <div>
+            <a href="mailto:hello@bmfcreativeagency.com" class="text-white text-sm hover:text-[#D4AF5A] transition-smooth">hello@bmfcreativeagency.com</a>
+          </div>
+        </div>
+        <div class="flex items-center gap-4">
+          <div class="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0" style="background:rgba(184,149,42,0.12)">
+            <i class="fa-brands fa-instagram" style="color:var(--gold)"></i>
+          </div>
+          <div>
+            <a href="https://instagram.com/bmfcreative.id" target="_blank" rel="noopener" class="text-white text-sm hover:text-[#D4AF5A] transition-smooth">@bmfcreative.id</a>
+          </div>
+        </div>
+      </div>
+
+      <p class="font-mono text-[0.65rem] text-white/30 tracking-wider mb-4">DIVISION DIRECTORY</p>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="flex items-center gap-2"><span class="div-dot" style="background:#B8952A"></span><span class="text-white/50 text-xs">BMF.Creative</span></div>
+        <div class="flex items-center gap-2"><span class="div-dot" style="background:#9B2335"></span><span class="text-white/50 text-xs">Automedia</span></div>
+        <div class="flex items-center gap-2"><span class="div-dot" style="background:#5B3F8C"></span><span class="text-white/50 text-xs">Visual</span></div>
+        <div class="flex items-center gap-2"><span class="div-dot" style="background:#C0392B"></span><span class="text-white/50 text-xs">Webdesign</span></div>
+        <div class="flex items-center gap-2"><span class="div-dot" style="background:#4A5568"></span><span class="text-white/50 text-xs">Photography</span></div>
+        <div class="flex items-center gap-2"><span class="div-dot" style="background:#B76E79"></span><span class="text-white/50 text-xs">Photostudio</span></div>
+        <div class="flex items-center gap-2"><span class="div-dot" style="background:#B7410E"></span><span class="text-white/50 text-xs">Graduate</span></div>
+        <div class="flex items-center gap-2"><span class="div-dot" style="background:rgba(255,255,255,0.4)"></span><span class="text-white/50 text-xs">Clothes</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= FOOTER ================= -->
+<footer style="background:var(--footer); border-top:1px solid var(--gold-subtle)">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 pt-16 pb-8">
+    <div class="text-center mb-14">
+      <h3 class="font-syne font-bold text-2xl md:text-3xl tracking-[0.15em]" style="color:var(--gold)">BMF.Creative</h3>
+      <p class="font-mono text-[0.65rem] text-white/30 tracking-[0.2em] mt-3">SMALL TASTE, BIG EXPERIENCES</p>
+      <div class="gold-divider-center mt-6"></div>
+    </div>
+
+    <div class="grid sm:grid-cols-3 gap-10 mb-14 text-center sm:text-left">
+      <div>
+        <p class="font-mono text-[0.65rem] text-white/30 tracking-wider mb-4">NAVIGATION</p>
+        <div class="flex flex-col gap-2.5">
+          <a href="#home" class="text-white/40 text-sm hover:text-[#D4AF5A] transition-smooth">Home</a>
+          <a href="#about" class="text-white/40 text-sm hover:text-[#D4AF5A] transition-smooth">About</a>
+          <a href="#divisions" class="text-white/40 text-sm hover:text-[#D4AF5A] transition-smooth">Divisions</a>
+          <a href="#portfolio" class="text-white/40 text-sm hover:text-[#D4AF5A] transition-smooth">Portfolio</a>
+        </div>
+      </div>
+      <div>
+        <p class="font-mono text-[0.65rem] text-white/30 tracking-wider mb-4">ACTIVE SERVICES</p>
+        <div class="flex flex-col gap-2.5">
+          <span class="text-white/40 text-sm">BMF Automedia</span>
+          <span class="text-white/40 text-sm">BMF Visual</span>
+          <span class="text-white/40 text-sm">BMF Webdesign</span>
+        </div>
+      </div>
+      <div>
+        <p class="font-mono text-[0.65rem] text-white/30 tracking-wider mb-4">GEOGRAPHIC HUB</p>
+        <div class="flex flex-col gap-2.5">
+          <span class="text-white/40 text-sm">Padang, Sumatera Barat</span>
+          <span class="text-white/40 text-sm">Sawahlunto, Sumatera Barat</span>
+          <span class="text-white/40 text-sm">Indonesia</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex justify-center gap-5 mb-10">
+      <a href="https://instagram.com/bmfcreative.id" target="_blank" rel="noopener" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-white/50 hover:text-[#D4AF5A] transition-smooth"><i class="fa-brands fa-instagram"></i></a>
+      <a href="mailto:hello@bmfcreativeagency.com" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-white/50 hover:text-[#D4AF5A] transition-smooth"><i class="fa-solid fa-envelope"></i></a>
+      <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-white/50 hover:text-[#D4AF5A] transition-smooth"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+
+    <div class="text-center font-mono text-[0.65rem] text-white/20 space-y-1 border-t border-white/5 pt-8">
+      <p>© 2026 BMF.Creative — Founded by Bima Febrian. All Rights Reserved.</p>
+      <p>Built with love in Padang &amp; Sawahlunto, West Sumatera, Indonesia.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ================= FLOATING WHATSAPP ================= -->
+<a id="wa-float" href="https://wa.me/6281234567890" target="_blank" rel="noopener">
+  <i class="fa-brands fa-whatsapp text-2xl" style="color:#0A0A0A"></i>
+  <span id="wa-tooltip">Chat BMF!</span>
+</a>
+
+<!-- ================= SUCCESS MODAL ================= -->
+<div class="modal-overlay" id="success-modal">
+  <div class="modal-box glass-card max-w-sm w-full p-8 text-center" style="border-top:2px solid var(--gold)">
+    <div class="w-16 h-16 rounded-full mx-auto mb-5 flex items-center justify-center" style="background:rgba(34,197,94,0.12)">
+      <i class="fa-solid fa-check text-2xl" style="color:#22c55e"></i>
+    </div>
+    <h3 class="font-fraunces italic text-white text-2xl mb-3">Formulir Dikirim!</h3>
+    <p class="text-white/60 text-sm mb-8">Terima kasih telah menghubungi BMF.Creative. Tim kami akan segera merespons melalui email atau WhatsApp yang Anda berikan.</p>
+    <button onclick="closeModal('success-modal')" class="btn-gold-solid font-mono text-xs w-full py-3 rounded-full tracking-wider">TUTUP</button>
+  </div>
+</div>
+
+<!-- ================= PORTFOLIO DETAIL MODAL ================= -->
+<div class="modal-overlay" id="project-modal">
+  <div class="modal-box glass-card max-w-md w-full p-8" style="border-color:var(--gold-subtle)">
+    <span id="modal-division" class="font-mono text-xs" style="color:var(--gold)"></span>
+    <h3 id="modal-title" class="font-fraunces italic text-white text-2xl md:text-3xl mt-3 mb-4"></h3>
+    <p id="modal-description" class="text-white/60 text-sm mb-8 leading-relaxed"></p>
+    <div class="flex gap-3">
+      <a id="modal-link" href="#" target="_blank" rel="noopener" class="btn-gold-outline font-mono text-xs flex-1 text-center py-3 rounded-full tracking-wider"></a>
+      <button onclick="closeModal('project-modal')" class="btn-gold-solid font-mono text-xs flex-1 py-3 rounded-full tracking-wider">TUTUP</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  // ---------- Loading screen ----------
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('loading-screen').classList.add('hide');
+    }, 1800);
+  });
+
+  // ---------- Navbar scroll effect ----------
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 40) navbar.classList.add('scrolled');
+    else navbar.classList.remove('scrolled');
+  });
+
+  // ---------- Mobile hamburger ----------
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+    hamburger.innerHTML = mobileMenu.classList.contains('open')
+      ? '<i class="fa-solid fa-xmark"></i>'
+      : '<i class="fa-solid fa-bars"></i>';
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+    mobileMenu.classList.remove('open');
+    hamburger.innerHTML = '<i class="fa-solid fa-bars"></i>';
+  }));
+
+  // ---------- Scroll reveal ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ---------- Services tab switching ----------
+  function switchTab(tab, btn) {
+    document.querySelectorAll('.service-panel').forEach(p => p.classList.remove('active'));
+    document.getElementById('panel-' + tab).classList.add('active');
+
+    document.querySelectorAll('.tab-btn').forEach(b => {
+      b.style.background = '';
+      b.style.color = '';
+      b.classList.remove('active');
+    });
+    btn.classList.add('active');
+    btn.style.background = 'var(--gold)';
+    btn.style.color = '#0A0A0A';
+  }
+
+  // ---------- Portfolio filter ----------
+  function filterPortfolio(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => {
+      b.style.background = '';
+      b.style.color = '';
+    });
+    btn.style.background = 'var(--gold)';
+    btn.style.color = '#0A0A0A';
+
+    const items = document.querySelectorAll('.portfolio-item');
+    items.forEach(item => {
+      const cat = item.getAttribute('data-category');
+      const isExtra = item.classList.contains('logo-only') || item.classList.contains('photo-only');
+
+      if (category === 'all') {
+        item.style.display = isExtra ? 'none' : '';
+      } else {
+        item.style.display = (cat === category) ? '' : 'none';
+      }
+    });
+  }
+
+  // ---------- Portfolio detail modal ----------
+  function openProjectModal(title, division, description, link, linkLabel) {
+    document.getElementById('modal-title').textContent = title;
+    document.getElementById('modal-division').textContent = division;
+    document.getElementById('modal-description').textContent = description;
+    const linkEl = document.getElementById('modal-link');
+    linkEl.href = link;
+    linkEl.textContent = linkLabel;
+    document.getElementById('project-modal').classList.add('open');
+  }
+
+  function closeModal(id) {
+    document.getElementById(id).classList.remove('open');
+  }
+
+  document.querySelectorAll('.modal-overlay').forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) overlay.classList.remove('open');
+    });
+  });
+
+  // ---------- Testimonial slider ----------
+  const testiSlides = document.querySelectorAll('.testi-slide');
+  const testiDots = document.querySelectorAll('.testi-dot');
+  let testiIndex = 0;
+  let testiTimer;
+
+  function goToTesti(i) {
+    testiSlides.forEach(s => s.classList.remove('active'));
+    testiDots.forEach(d => d.classList.remove('active'));
+    testiSlides[i].classList.add('active');
+    testiDots[i].classList.add('active');
+    testiIndex = i;
+    resetTestiTimer();
+  }
+
+  function nextTesti() {
+    goToTesti((testiIndex + 1) % testiSlides.length);
+  }
+
+  function resetTestiTimer() {
+    clearInterval(testiTimer);
+    testiTimer = setInterval(nextTesti, 5000);
+  }
+  resetTestiTimer();
+
+  // ---------- Contact form submit ----------
+  document.getElementById('contact-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    document.getElementById('success-modal').classList.add('open');
+    this.reset();
+  });
+</script>
+
+</body>
+</html>
