@@ -255,8 +255,6 @@
 
   .portfolio-item{ position:relative; overflow:hidden; }
   .portfolio-overlay{
-  .portfolio-item{ position:relative; overflow:hidden; }
-  .portfolio-overlay{
     position:absolute; inset:0;
     background:linear-gradient(180deg, rgba(10,10,10,0.2), rgba(10,10,10,0.95));
     display:flex; flex-direction:column; justify-content:flex-end;
@@ -417,11 +415,9 @@
       <div class="relative w-[380px] h-[380px] flex items-center justify-center">
         <div class="absolute inset-0 rounded-full border border-gold/25 rotate-slow"></div>
         <div class="absolute inset-10 border border-gold/20 rotate-slow-rev" style="transform:rotate(45deg);"></div>
-        <div class="absolute w-48 h-48 rounded-full glass-card flex items-center justify-center">
-          <span class="font-syne font-bold text-2xl text-white">BMF</span>
+        <div class="absolute w-48 h-48 rounded-full glass-card flex items-center justify-center overflow-hidden">
+          <img src="BMF_LOGO.png" alt="BMF Creative Logo" class="w-full h-full object-contain p-4" onerror="this.parentElement.innerHTML='<span class=\'font-syne font-bold text-2xl text-white\'>BMF</span>'">
         </div>
-        <img src="BMF_LOGO.png" alt="BMF Creative Logo" class="w-[300px] object-contain absolute opacity-0" onerror="this.style.display='none'">
-      </div>
       <div class="absolute bottom-0 right-0 text-right font-mono text-[0.65rem] text-white/20 leading-relaxed">
         <p>EST. 2024</p>
         <p>WEST SUMATERA</p>
@@ -432,10 +428,10 @@
 
 <!-- ================= ABOUT / FOUNDER STORY ================= -->
 <section id="about" class="py-24 md:py-32" style="background:var(--bg-secondary)">
-  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-14 items-stretch">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 grid lg:grid-cols-2 gap-14 items-center">
 
     <div class="reveal">
-      <div class="relative rounded-2xl overflow-hidden border h-full" style="border-color:rgba(184,149,42,0.2)">
+      <div class="relative rounded-2xl overflow-hidden border aspect-[3/4] lg:aspect-auto lg:h-[600px]" style="border-color:rgba(184,149,42,0.2)">
         <div class="w-full h-full relative">
           <img src="foto-founder.jpeg" alt="Bima Febrian — Founder & CEO" class="w-full h-full object-cover img-fallback" onerror="this.classList.add('img-fallback')">
           <div class="absolute inset-0" style="background:linear-gradient(180deg, transparent 40%, rgba(10,10,10,0.92) 100%)"></div>
@@ -807,7 +803,7 @@
 
       <!-- PHOTOGRAPHY -->
       <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="photo">
-        <img src="portfolio/automotive-black-modified.jpg" alt="Black Modified Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <img src="portfolio/automotive-black-modified.png" alt="Black Modified Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
         <div class="portfolio-overlay">
           <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
           <h4 class="font-syne text-white font-bold text-lg mt-1">Black Modified Series</h4>
@@ -817,7 +813,7 @@
       </div>
 
       <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="photo">
-        <img src="portfolio/automotive-white-modified.jpg" alt="White Modified Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <img src="portfolio/automotive-white-modified.png" alt="White Modified Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
         <div class="portfolio-overlay">
           <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
           <h4 class="font-syne text-white font-bold text-lg mt-1">White Modified Series</h4>
@@ -827,7 +823,7 @@
       </div>
 
       <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="photo">
-        <img src="portfolio/automotive-pink-livery.jpg" alt="Pink Livery Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <img src="portfolio/automotive-pink-livery.png" alt="Pink Livery Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
         <div class="portfolio-overlay">
           <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
           <h4 class="font-syne text-white font-bold text-lg mt-1">Pink Livery Series</h4>
@@ -837,7 +833,7 @@
       </div>
 
       <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="photo">
-        <img src="portfolio/automotive-wheel-closeup.jpg" alt="Wheel Closeup Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <img src="portfolio/automotive-wheel-closeup.png" alt="Wheel Closeup Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
         <div class="portfolio-overlay">
           <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
           <h4 class="font-syne text-white font-bold text-lg mt-1">Wheel Closeup Series</h4>
@@ -847,7 +843,7 @@
       </div>
 
       <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="photo">
-        <img src="portfolio/automotive-blue-sedan.jpg" alt="Blue Sedan Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <img src="portfolio/automotive-blue-sedan.png" alt="Blue Sedan Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
         <div class="portfolio-overlay">
           <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
           <h4 class="font-syne text-white font-bold text-lg mt-1">Blue Sedan Series</h4>
@@ -857,7 +853,7 @@
       </div>
 
       <div class="portfolio-item aspect-square rounded-xl glass-card flex-none w-[78%] sm:w-[46%] lg:w-[31.5%] snap-start" data-category="photo">
-        <img src="portfolio/automotive-boomber2gd.jpg" alt="Automotive Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
+        <img src="portfolio/automotive-boomber2gd.png" alt="Automotive Series" class="w-full h-full object-cover" onerror="this.classList.add('img-fallback')">
         <div class="portfolio-overlay">
           <span class="font-mono text-[0.65rem]" style="color:var(--gold)">BMF.Automedia</span>
           <h4 class="font-syne text-white font-bold text-lg mt-1">Automotive Series</h4>
