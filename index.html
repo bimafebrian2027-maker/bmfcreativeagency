@@ -282,15 +282,46 @@
   .portfolio-item:hover img{ transform:scale(1.08); }
 
   /* Testimonial */
-  .testi-slide{ display:none; }
-  .testi-slide.active{ display:block; animation:fadeInUp 0.6s ease; }
-  @keyframes fadeInUp{ from{ opacity:0; transform:translateY(16px);} to{ opacity:1; transform:translateY(0);} }
-  .testi-dot{
-    width:8px; height:8px; border-radius:50%;
-    background:rgba(255,255,255,0.15);
-    transition:all 0.3s ease; cursor:pointer;
-  }
-  .testi-dot.active{ background:var(--gold); width:22px; border-radius:4px; }
+  #testi-viewport{
+  position:relative;
+  max-width:640px;
+  margin:0 auto;
+  min-height:300px;
+  overflow:visible;
+}
+.testi-card{
+  position:absolute;
+  top:0; left:50%;
+  width:100%;
+  transform:translate(-50%,0) scale(0.72);
+  opacity:0;
+  filter:blur(3px);
+  transition:transform 0.7s cubic-bezier(0.16,1,0.3,1), opacity 0.7s ease, filter 0.7s ease;
+  pointer-events:none;
+  z-index:1;
+}
+.testi-card.is-active{
+  transform:translate(-50%,0) scale(1);
+  opacity:1;
+  filter:blur(0);
+  z-index:3;
+  pointer-events:auto;
+}
+.testi-card.is-prev{
+  transform:translate(calc(-50% - 92%),0) scale(0.72);
+  opacity:0.25;
+  filter:blur(2px);
+  z-index:2;
+}
+.testi-card.is-next{
+  transform:translate(calc(-50% + 92%),0) scale(0.72);
+  opacity:0.25;
+  filter:blur(2px);
+  z-index:2;
+}
+@media (max-width:767px){
+  .testi-card.is-prev, .testi-card.is-next{ opacity:0 !important; }
+}
 
   /* Modal */
   .modal-overlay{
