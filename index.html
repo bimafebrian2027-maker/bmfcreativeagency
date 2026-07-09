@@ -210,20 +210,28 @@
   .rotate-slow-rev{ animation:rotateSlowRev 55s linear infinite; }
   @keyframes rotateSlowRev{ from{ transform:rotate(360deg); } to{ transform:rotate(0deg); } }
 
-  /* Shine sweep di logo */
-  .logo-shine-wrap{ position:relative; overflow:hidden; display:inline-block; }
+  /* Shine sweep di logo — presisi ngikutin bentuk PNG */
+  .logo-shine-wrap{ position:relative; display:inline-block; line-height:0; }
+  .logo-shine-wrap img{ display:block; }
   .logo-shine{
-    position:absolute; top:0; left:-150%;
-    width:60%; height:100%;
-    background:linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
-    transform:skewX(-20deg);
-    animation:shineSweep 5s ease-in-out infinite;
+    position:absolute; inset:0;
+    background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.85) 50%, transparent 70%);
+    background-size:250% 250%;
+    -webkit-mask-image:url('BMF_LOGO.png');
+    -webkit-mask-repeat:no-repeat;
+    -webkit-mask-size:contain;
+    -webkit-mask-position:center;
+    mask-image:url('BMF_LOGO.png');
+    mask-repeat:no-repeat;
+    mask-size:contain;
+    mask-position:center;
+    animation:shineSweepMask 5s ease-in-out infinite;
     pointer-events:none;
   }
-  @keyframes shineSweep{
-    0%{ left:-150%; }
-    35%{ left:150%; }
-    100%{ left:150%; }
+  @keyframes shineSweepMask{
+    0%{ background-position:200% 200%; }
+    35%{ background-position:-50% -50%; }
+    100%{ background-position:-50% -50%; }
   }
 
   /* Orbit particle gold mengelilingi logo */
