@@ -210,29 +210,7 @@
   .rotate-slow-rev{ animation:rotateSlowRev 55s linear infinite; }
   @keyframes rotateSlowRev{ from{ transform:rotate(360deg); } to{ transform:rotate(0deg); } }
 
-  /* Shine sweep di logo — presisi ngikutin bentuk PNG */
-  .logo-shine-wrap{ position:relative; display:inline-block; line-height:0; }
-  .logo-shine-wrap img{ display:block; }
-  .logo-shine{
-    position:absolute; inset:0;
-    background:linear-gradient(120deg, transparent 30%, rgba(255,255,255,0.85) 50%, transparent 70%);
-    background-size:250% 250%;
-    -webkit-mask-image:url('BMF_LOGO.png');
-    -webkit-mask-repeat:no-repeat;
-    -webkit-mask-size:contain;
-    -webkit-mask-position:center;
-    mask-image:url('BMF_LOGO.png');
-    mask-repeat:no-repeat;
-    mask-size:contain;
-    mask-position:center;
-    animation:shineSweepMask 4s linear infinite;
-    pointer-events:none;
-  }
-  @keyframes shineSweepMask{
-    0%{ background-position:220% 220%; }
-    100%{ background-position:-220% -220%; }
-  }
-
+  
   /* Orbit particle gold mengelilingi logo */
   .orbit-particle{
     position:absolute; top:50%; left:50%;
@@ -451,10 +429,7 @@
         <div class="orbit-particle" style="animation-delay:-3.3s;"></div>
         <div class="orbit-particle" style="animation-delay:-6.6s;"></div>
 
-        <div class="logo-shine-wrap relative z-10">
-          <img src="BMF_LOGO.png" alt="BMF Creative Logo" class="w-[320px] max-w-none object-contain" onerror="this.style.display='none'">
-          <div class="logo-shine"></div>
-        </div>
+        <img src="BMF_LOGO.png" alt="BMF Creative Logo" class="w-[320px] max-w-none object-contain relative z-10" onerror="this.style.display='none'">
       </div>
       <div class="absolute bottom-0 right-0 text-right font-mono text-[0.65rem] text-white/20 leading-relaxed">
         <p>EST. 2024</p>
