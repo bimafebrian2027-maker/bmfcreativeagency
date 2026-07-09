@@ -210,6 +210,36 @@
   .rotate-slow-rev{ animation:rotateSlowRev 55s linear infinite; }
   @keyframes rotateSlowRev{ from{ transform:rotate(360deg); } to{ transform:rotate(0deg); } }
 
+  /* Shine sweep di logo */
+  .logo-shine-wrap{ position:relative; overflow:hidden; display:inline-block; }
+  .logo-shine{
+    position:absolute; top:0; left:-150%;
+    width:60%; height:100%;
+    background:linear-gradient(120deg, transparent 0%, rgba(255,255,255,0.5) 50%, transparent 100%);
+    transform:skewX(-20deg);
+    animation:shineSweep 5s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes shineSweep{
+    0%{ left:-150%; }
+    35%{ left:150%; }
+    100%{ left:150%; }
+  }
+
+  /* Orbit particle gold mengelilingi logo */
+  .orbit-particle{
+    position:absolute; top:50%; left:50%;
+    width:6px; height:6px; border-radius:50%;
+    background:var(--gold-light);
+    box-shadow:0 0 8px 2px rgba(212,175,90,0.6);
+    animation:orbitRotate 10s linear infinite;
+    transform-origin:0 0;
+  }
+  @keyframes orbitRotate{
+    from{ transform:rotate(0deg) translateX(190px) rotate(0deg); }
+    to{ transform:rotate(360deg) translateX(190px) rotate(-360deg); }
+  }
+
   /* Scroll reveal */
   .reveal{
     opacity:0; transform:translateY(30px);
@@ -409,7 +439,15 @@
       <div class="relative w-[380px] h-[380px] flex items-center justify-center">
         <div class="absolute inset-0 rounded-full border border-gold/25 rotate-slow"></div>
         <div class="absolute inset-10 border border-gold/20 rotate-slow-rev" style="transform:rotate(45deg);"></div>
-        <img src="BMF_LOGO.png" alt="BMF Creative Logo" class="w-[320px] max-w-none object-contain relative z-10" onerror="this.style.display='none'">
+
+        <div class="orbit-particle" style="animation-delay:0s;"></div>
+        <div class="orbit-particle" style="animation-delay:-3.3s;"></div>
+        <div class="orbit-particle" style="animation-delay:-6.6s;"></div>
+
+        <div class="logo-shine-wrap relative z-10">
+          <img src="BMF_LOGO.png" alt="BMF Creative Logo" class="w-[320px] max-w-none object-contain" onerror="this.style.display='none'">
+          <div class="logo-shine"></div>
+        </div>
       </div>
       <div class="absolute bottom-0 right-0 text-right font-mono text-[0.65rem] text-white/20 leading-relaxed">
         <p>EST. 2024</p>
