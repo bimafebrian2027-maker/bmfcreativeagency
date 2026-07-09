@@ -861,59 +861,108 @@
 </section>
 
 <!-- ================= TESTIMONIALS ================= -->
-<section class="py-24 md:py-32 relative overflow-hidden" style="background:var(--bg-secondary)">
-  <div class="font-fraunces absolute -top-4 left-4 md:left-12 text-[10rem] md:text-[16rem]" style="color:rgba(184,149,42,0.08); line-height:1;">"</div>
-
-  <div class="max-w-3xl mx-auto px-5 md:px-8 relative z-10 text-center reveal">
-    <span class="font-mono text-xs tracking-[0.3em]" style="color:var(--gold)">TESTIMONIALS</span>
-    <h2 class="font-fraunces italic text-3xl md:text-4xl text-white mt-4 mb-12">What Clients Say?</h2>
-
-    <div id="testi-wrapper">
-      <div class="testi-slide active">
-        <div class="flex justify-center gap-1 mb-6">
-          <i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i>
-        </div>
-        <p class="font-outfit text-white/80 text-xl md:text-2xl leading-relaxed mb-3">Sebagai klien setia sejak awal berdirinya bmf.creative, saya telah memercayakan berbagai proyek desain logo dan branding kepada tim ini. Dari proyek pertama hingga beberapa proyek setelahnya, kualitas kerja yang dihasilkan selalu konsisten dan luar biasa. Tim ini tidak hanya kreatif, tetapi juga mampu menerjemahkan visi bisnis menjadi karya visual yang kuat. Sangat puas dengan dedikasi dan profesionalisme mereka.</p>
-        <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">ZACKKIY</p>
-        <p class="font-outfit text-white/40 text-xs mt-1">founder of mtcrt racing team</p>
-      </div>
-
-      <div class="testi-slide">
-        <div class="flex justify-center gap-1 mb-6">
-          <i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i>
-        </div>
-        <p class="font-outfit text-white/80 text-xl md:text-2xl leading-relaxed mb-3">Tim BMF Webdesign membangun website perusahaan kami dengan tampilan premium dan navigasi yang jelas dan membuat kami sekarang jauh lebih mudah menampilkan dan menjelaskan produk ke calon klien.</p>
-        <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">KARINA WAHYUNI</p>
-        <p class="font-outfit text-white/40 text-xs mt-1">Direktur, Luxury Coffe Home Padang</p>
-      </div>
-
-      <div class="testi-slide">
-        <div class="flex justify-center gap-1 mb-6">
-          <i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i>
-        </div>
-        <p class="font-outfit text-white/80 text-xl md:text-2xl leading-relaxed mb-3">Desain yang saya buat di BMF sangat bagus dan detailnya sangat keren. Harapannya semoga agensi ini tetap konsisten terus sampai kedepannya.</p>
-        <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">HAIKAL ERDI ARRASYID</p>
-        <p class="font-outfit text-white/40 text-xs mt-1">Owner Garasebunda</p>
-      </div>
-
-      <div class="testi-slide">
-        <div class="flex justify-center gap-1 mb-6">
-          <i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i>
-        </div>
-        <p class="font-outfit text-white/80 text-xl md:text-2xl leading-relaxed mb-3">Hasil foto dari BMF Automedia sangat presisi menurut saya, walaupun menggunakan android namun setiap detail modifikasi kendaraan kami tertangkap dengan pencahayaan yang pas dan profesional.</p>
-        <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">HENDRA PURNOMO</p>
-        <p class="font-outfit text-white/40 text-xs mt-1">Participant Turbo Clash Padang 2026</p>
-      </div>
+<section id="testimonials" class="py-24 md:py-32 overflow-hidden" style="background:var(--bg-secondary)">
+  <div class="max-w-7xl mx-auto px-5 md:px-8">
+    <div class="text-center mb-16 reveal">
+      <span class="font-mono text-xs tracking-[0.3em]" style="color:var(--gold)">TESTIMONIALS</span>
+      <h2 class="font-fraunces italic text-3xl md:text-4xl text-white mt-4">What Clients Say?</h2>
     </div>
 
-    <div class="flex justify-center gap-2 mt-10" id="testi-dots">
-      <div class="testi-dot active" onclick="goToTesti(0)"></div>
-      <div class="testi-dot" onclick="goToTesti(1)"></div>
-      <div class="testi-dot" onclick="goToTesti(2)"></div>
-    </div>
+    <!-- Slider Wrapper -->
+    <div class="relative">
 
-    <p class="font-outfit text-xs text-white/40 mt-12">Pernah menggunakan layanan kami?</p>
-    <a href="https://forms.gle/m1LHao2rJjB6qiSx6" target="_blank" rel="noopener" class="inline-block btn-gold-outline font-mono text-xs px-6 py-3 rounded-full mt-4 tracking-wider">BERIKAN TESTIMONI</a>
+      <!-- Prev Button -->
+      <button id="testi-prev" class="absolute left-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 -translate-x-2 md:-translate-x-5" style="background:rgba(184,149,42,0.15); border:1px solid rgba(184,149,42,0.3); color:var(--gold)">
+        <i class="fa-solid fa-chevron-left text-sm"></i>
+      </button>
+
+      <!-- Next Button -->
+      <button id="testi-next" class="absolute right-0 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 translate-x-2 md:translate-x-5" style="background:rgba(184,149,42,0.15); border:1px solid rgba(184,149,42,0.3); color:var(--gold)">
+        <i class="fa-solid fa-chevron-right text-sm"></i>
+      </button>
+
+      <!-- Track -->
+      <div id="testi-track" class="flex items-center gap-6 px-12 md:px-16 transition-all duration-500">
+
+        <!-- Slide 1 -->
+        <div class="testi-card flex-shrink-0 w-full md:w-[calc(100%-120px)] glass-card p-8 md:p-10 text-center transition-all duration-500">
+          <div class="flex justify-center gap-1 mb-6">
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+          </div>
+          <p class="font-fraunces italic text-white/80 text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+            "Sebagai klien setia sejak awal berdirinya bmf.creative, saya telah memercayakan berbagai proyek desain logo dan branding kepada tim ini. Dari proyek pertama hingga beberapa proyek setelahnya, kualitas kerja yang dihasilkan selalu konsisten dan luar biasa. Tim ini tidak hanya kreatif, tetapi juga mampu menerjemahkan visi bisnis menjadi karya visual yang kuat. Sangat puas dengan dedikasi dan profesionalisme mereka."</p>
+          <p class="font-mono text-xs tracking-widest mb-1" style="color:var(--gold)">ZACCKIY</p>
+          <p class="font-outfit text-white/40 text-xs">Founder of MTCRT Racing Team</p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="testi-card flex-shrink-0 w-full md:w-[calc(100%-120px)] glass-card p-8 md:p-10 text-center transition-all duration-500">
+          <div class="flex justify-center gap-1 mb-6">
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+          </div>
+          <p class="font-fraunces italic text-white/80 text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+            "Tim BMF Webdesign membangun website perusahaan kami dengan tampilan premium dan navigasi yang jelas dan membuat kami sekarang jauh lebih mudah menampilkan dan menjelaskan produk ke calon klien."</p>
+          <p class="font-mono text-xs tracking-widest mb-1" style="color:var(--gold)">KARINA WAHYUNI</p>
+          <p class="font-outfit text-white/40 text-xs">Direktur, Luxury Coffe Home Padang</p>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="testi-card flex-shrink-0 w-full md:w-[calc(100%-120px)] glass-card p-8 md:p-10 text-center transition-all duration-500">
+          <div class="flex justify-center gap-1 mb-6">
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+          </div>
+          <p class="font-fraunces italic text-white/80 text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+            "Desain yang saya buat di BMF sangat bagus dan detailnya sangat keren. Harapannya semoga agensi ini tetap konsisten terus sampai kedepannya."</p>
+          <p class="font-mono text-xs tracking-widest mb-1" style="color:var(--gold)">HAIKAL ERDI ARRASYID</p>
+          <p class="font-outfit text-white/40 text-xs">Owner Garasebunda</p>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="testi-card flex-shrink-0 w-full md:w-[calc(100%-120px)] glass-card p-8 md:p-10 text-center transition-all duration-500">
+          <div class="flex justify-center gap-1 mb-6">
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+            <i class="fa-solid fa-star text-sm" style="color:var(--gold)"></i>
+          </div>
+          <p class="font-fraunces italic text-white/80 text-base md:text-lg leading-relaxed mb-8 max-w-2xl mx-auto">
+            "Hasil foto dari BMF Automedia sangat presisi menurut saya, walaupun menggunakan android namun setiap detail modifikasi kendaraan kami tertangkap dengan pencahayaan yang pas dan profesional."</p>
+          <p class="font-mono text-xs tracking-widest mb-1" style="color:var(--gold)">HENDRA PURNOMO</p>
+          <p class="font-outfit text-white/40 text-xs">Participant Turbo Clash Padang 2026</p>
+        </div>
+
+      </div>
+
+      <!-- Dots -->
+      <div class="flex justify-center gap-2 mt-10">
+        <button class="testi-dot active" onclick="goToTestiNew(0)"></button>
+        <button class="testi-dot" onclick="goToTestiNew(1)"></button>
+        <button class="testi-dot" onclick="goToTestiNew(2)"></button>
+        <button class="testi-dot" onclick="goToTestiNew(3)"></button>
+      </div>
+
+      <!-- GForm Button -->
+      <div class="text-center mt-10">
+        <p class="font-outfit text-xs text-white/40 mb-4">Pernah menggunakan layanan kami?</p>
+        <a href="https://forms.gle/m1LHao2rJjB6qiSx6" target="_blank" class="btn-gold-outline font-mono text-xs px-6 py-3 rounded-full tracking-wider inline-flex items-center gap-2">
+          <i class="fa-solid fa-star text-xs"></i> BERIKAN TESTIMONI
+        </a>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -1016,61 +1065,150 @@
 </section>
 
 <!-- ================= FOOTER ================= -->
-<footer style="background:var(--footer); border-top:1px solid var(--gold-subtle)">
-  <div class="max-w-7xl mx-auto px-5 md:px-8 pt-16 pb-8">
-    <div class="text-center mb-14">
-      <h3 class="font-syne font-bold text-2xl md:text-3xl tracking-[0.15em]" style="color:var(--gold)">BMF.CREATIVE</h3>
-      <p class="font-mono text-[0.65rem] text-white/30 tracking-[0.2em] mt-3">SMALL TASTE, BIG EXPERIENCES</p>
-      <div class="gold-divider-center mt-6"></div>
-    </div>
+<footer style="background:var(--footer-bg); border-top:1px solid rgba(184,149,42,0.2)">
 
-    <div class="grid sm:grid-cols-3 gap-10 mb-14 text-center sm:text-left">
-      <div>
-        <p class="font-mono text-[0.65rem] text-white/30 tracking-wider mb-4">NAVIGATION</p>
-        <div class="flex flex-col gap-2.5">
-          <a href="#home" class="text-white/40 text-sm hover:text-[#D4AF5A] transition-smooth">Home</a>
-          <a href="#about" class="text-white/40 text-sm hover:text-[#D4AF5A] transition-smooth">About</a>
-          <a href="#divisions" class="text-white/40 text-sm hover:text-[#D4AF5A] transition-smooth">Divisions</a>
-          <a href="#divisions" class="text-white/40 text-sm hover:text-[#D4AF5A] transition-smooth">Services</a>
-          <a href="#portfolio" class="text-white/40 text-sm hover:text-[#D4AF5A] transition-smooth">Portfolio</a>
-          <a href="#divisions" class="text-white/40 text-sm hover:text-[#D4AF5A] transition-smooth">Contact</a>
-        </div>
+  <!-- Top CTA Banner -->
+  <div class="py-16 md:py-20 text-center border-b" style="border-color:rgba(255,255,255,0.05)">
+    <div class="max-w-3xl mx-auto px-5">
+      <span class="font-mono text-xs tracking-[0.3em] mb-4 block" style="color:var(--gold)">READY TO START?</span>
+      <h2 class="font-fraunces italic text-3xl md:text-5xl text-white mb-6">Ada proyek yang ingin<br>kamu wujudkan?</h2>
+      <p class="font-outfit text-white/40 mb-8 text-sm">Dari logo, website, hingga foto otomotif — kami siap bantu dari nol sampai selesai.</p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="#contact" class="btn-gold-solid font-mono text-xs px-8 py-3.5 rounded-full tracking-wider">MULAI PROYEK</a>
+        <a href="https://bmfcreativeagency.vercel.app" target="_blank" class="btn-gold-outline font-mono text-xs px-8 py-3.5 rounded-full tracking-wider">LIHAT WEBSITE</a>
       </div>
-      <div>
-        <p class="font-mono text-[0.65rem] text-white/30 tracking-wider mb-4">ACTIVE SERVICES</p>
-        <div class="flex flex-col gap-2.5">
-          <span class="text-white/40 text-sm">BMF Automedia</span>
-          <span class="text-white/40 text-sm">BMF Visual</span>
-          <span class="text-white/40 text-sm">BMF Webdesign</span>
-          <span class="text-white/40 text-sm">BMF Photograph (Coming Soon)</span>
-          <span class="text-white/40 text-sm">BMF Graduate (Coming Soon)</span>
-          <span class="text-white/40 text-sm">BMF Photostudio (Coming Soon)</span>
-          <span class="text-white/40 text-sm">BMF Clothes Id (Coming Soon)</span>
-        </div>
-      </div>
-      <div>
-        <p class="font-mono text-[0.65rem] text-white/30 tracking-wider mb-4">GEOGRAPHIC HUB</p>
-        <div class="flex flex-col gap-2.5">
-          <span class="text-white/40 text-sm">Padang, Sumatera Barat</span>
-          <span class="text-white/40 text-sm">Sawahlunto, Sumatera Barat</span>
-          <span class="text-white/40 text-sm">Indonesia</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="flex justify-center gap-5 mb-10">
-      <a href="https://instagram.com/bmfcreative.id" target="_blank" rel="noopener" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-white/50 hover:text-[#D4AF5A] transition-smooth"><i class="fa-brands fa-instagram"></i></a>
-      <a href="mailto:hello@bmfcreativeagency.com" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-white/50 hover:text-[#D4AF5A] transition-smooth"><i class="fa-solid fa-envelope"></i></a>
-      <a href="https://wa.me/6281234567890" target="_blank" rel="noopener" class="w-10 h-10 rounded-full glass-card flex items-center justify-center text-white/50 hover:text-[#D4AF5A] transition-smooth"><i class="fa-brands fa-whatsapp"></i></a>
-    </div>
-
-    <div class="text-center font-mono text-[0.65rem] text-white/20 space-y-1 border-t border-white/5 pt-8">
-      <p>© 2026 BMF.Creative — Build By BMF.WebDesign. All Rights Reserved.</p>
-      <p>Padang &amp; Sawahlunto, West Sumatera, Indonesia.</p>
     </div>
   </div>
-</footer>
 
+  <!-- Stats Bar -->
+  <div class="py-10 border-b" style="border-color:rgba(255,255,255,0.05)">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+      <div>
+        <p class="font-syne font-bold text-2xl md:text-3xl mb-1" style="color:var(--gold)">2024</p>
+        <p class="font-mono text-[0.65rem] text-white/30 tracking-widest">EST. FOUNDED</p>
+      </div>
+      <div>
+        <p class="font-syne font-bold text-2xl md:text-3xl mb-1" style="color:var(--gold)">8+</p>
+        <p class="font-mono text-[0.65rem] text-white/30 tracking-widest">DIVISIONS</p>
+      </div>
+      <div>
+        <p class="font-syne font-bold text-2xl md:text-3xl mb-1" style="color:var(--gold)">100%</p>
+        <p class="font-mono text-[0.65rem] text-white/30 tracking-widest">PASSION DRIVEN</p>
+      </div>
+      <div>
+        <p class="font-syne font-bold text-2xl md:text-3xl mb-1" style="color:var(--gold)">∞</p>
+        <p class="font-mono text-[0.65rem] text-white/30 tracking-widest">CREATIVITY</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Footer Content -->
+  <div class="py-16 md:py-20">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+
+      <!-- Logo & Tagline -->
+      <div class="text-center mb-16">
+        <h2 class="font-syne font-bold text-3xl md:text-4xl tracking-widest mb-3" style="color:var(--gold)">BMF.CREATIVE</h2>
+        <p class="font-mono text-xs text-white/30 tracking-[0.3em]">SMALL TASTE, BIG EXPERIENCES</p>
+        <div class="w-16 h-px mx-auto mt-6" style="background:var(--gold)"></div>
+      </div>
+
+      <!-- 3 Column Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
+
+        <!-- Navigation -->
+        <div>
+          <h4 class="font-mono text-[0.65rem] tracking-[0.25em] text-white/30 mb-6 uppercase">Navigation</h4>
+          <div class="flex flex-col gap-3">
+            <a href="#home" class="font-outfit text-white/50 hover:text-white text-sm transition-colors duration-300">Home</a>
+            <a href="#about" class="font-outfit text-white/50 hover:text-white text-sm transition-colors duration-300">About</a>
+            <a href="#divisions" class="font-outfit text-white/50 hover:text-white text-sm transition-colors duration-300">Divisions</a>
+            <a href="#services" class="font-outfit text-white/50 hover:text-white text-sm transition-colors duration-300">Services</a>
+            <a href="#portfolio" class="font-outfit text-white/50 hover:text-white text-sm transition-colors duration-300">Portfolio</a>
+            <a href="#contact" class="font-outfit text-white/50 hover:text-white text-sm transition-colors duration-300">Contact</a>
+          </div>
+        </div>
+
+        <!-- Active Services -->
+        <div>
+          <h4 class="font-mono text-[0.65rem] tracking-[0.25em] text-white/30 mb-6 uppercase">Active Services</h4>
+          <div class="flex flex-col gap-3">
+            <a href="https://instagram.com/bmf.automedia" target="_blank" class="font-outfit text-white/50 hover:text-white text-sm transition-colors duration-300 flex items-center gap-2">
+              <span class="div-dot flex-shrink-0" style="background:#9B2335"></span>BMF Automedia
+            </a>
+            <a href="https://instagram.com/bmf.visual" target="_blank" class="font-outfit text-white/50 hover:text-white text-sm transition-colors duration-300 flex items-center gap-2">
+              <span class="div-dot flex-shrink-0" style="background:#5B3F8C"></span>BMF Visual
+            </a>
+            <a href="https://instagram.com/bmf.webdesign" target="_blank" class="font-outfit text-white/50 hover:text-white text-sm transition-colors duration-300 flex items-center gap-2">
+              <span class="div-dot flex-shrink-0" style="background:#C0392B"></span>BMF Webdesign
+            </a>
+            <span class="font-outfit text-white/25 text-sm flex items-center gap-2">
+              <span class="div-dot flex-shrink-0" style="background:#4A5568"></span>BMF Photography <span class="font-mono text-[0.6rem]">(Soon)</span>
+            </span>
+            <span class="font-outfit text-white/25 text-sm flex items-center gap-2">
+              <span class="div-dot flex-shrink-0" style="background:#B76E79"></span>BMF Photostudio <span class="font-mono text-[0.6rem]">(Soon)</span>
+            </span>
+            <span class="font-outfit text-white/25 text-sm flex items-center gap-2">
+              <span class="div-dot flex-shrink-0" style="background:#B7410E"></span>BMF Graduate <span class="font-mono text-[0.6rem]">(Soon)</span>
+            </span>
+            <span class="font-outfit text-white/25 text-sm flex items-center gap-2">
+              <span class="div-dot flex-shrink-0" style="background:rgba(255,255,255,0.3)"></span>BMClothes <span class="font-mono text-[0.6rem]">(Soon)</span>
+            </span>
+          </div>
+        </div>
+
+        <!-- Contact & Geographic -->
+        <div>
+          <h4 class="font-mono text-[0.65rem] tracking-[0.25em] text-white/30 mb-6 uppercase">Get In Touch</h4>
+          <div class="flex flex-col gap-4">
+            <div class="flex items-start gap-3">
+              <i class="fa-solid fa-location-dot text-xs mt-1 flex-shrink-0" style="color:var(--gold)"></i>
+              <div>
+                <p class="font-outfit text-white/50 text-sm">Padang & Sawahlunto</p>
+                <p class="font-outfit text-white/30 text-xs">Sumatera Barat, Indonesia</p>
+              </div>
+            </div>
+            <a href="mailto:your@email.com" class="flex items-center gap-3 group">
+              <i class="fa-solid fa-envelope text-xs flex-shrink-0" style="color:var(--gold)"></i>
+              <span class="font-outfit text-white/50 group-hover:text-white text-sm transition-colors">bmfcreative@gmail.com</span>
+            </a>
+            <a href="https://instagram.com/bmfcreative.id" target="_blank" class="flex items-center gap-3 group">
+              <i class="fa-brands fa-instagram text-xs flex-shrink-0" style="color:var(--gold)"></i>
+              <span class="font-outfit text-white/50 group-hover:text-white text-sm transition-colors">@bmfcreative.id</span>
+            </a>
+            <a href="https://wa.me/6287744232552" target="_blank" class="flex items-center gap-3 group">
+              <i class="fa-brands fa-whatsapp text-xs flex-shrink-0" style="color:var(--gold)"></i>
+              <span class="font-outfit text-white/50 group-hover:text-white text-sm transition-colors">WhatsApp Kami</span>
+            </a>
+          </div>
+
+          <!-- Social Icons -->
+          <div class="flex gap-3 mt-8">
+            <a href="https://instagram.com/bmfcreative.id" target="_blank" class="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.5)">
+              <i class="fa-brands fa-instagram text-sm"></i>
+            </a>
+            <a href="mailto:your@email.com" class="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.5)">
+              <i class="fa-solid fa-envelope text-sm"></i>
+            </a>
+            <a href="https://wa.me/628xxxxxxxxxx" target="_blank" class="w-9 h-9 rounded-full flex items-center justify-center transition-all duration-300 hover:scale-110" style="background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.5)">
+              <i class="fa-brands fa-whatsapp text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom Bar -->
+      <div class="pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4" style="border-color:rgba(255,255,255,0.06)">
+        <p class="font-mono text-[0.65rem] text-white/20 tracking-wider">© 2026 BMF.Creative — Founded by BMF WebDesign. All Rights Reserved.</p>
+        <p class="font-mono text-[0.65rem] text-white/15 tracking-wider">Built with love in Padang & Sawahlunto, West Sumatera</p>
+      </div>
+
+    </div>
+  </div>
+
+</footer>
+  
 <!-- ================= FLOATING WHATSAPP ================= -->
 <a id="wa-float" href="https://wa.me/6287744232552" target="_blank" rel="noopener">
   <i class="fa-brands fa-whatsapp text-2xl" style="color:#0A0A0A"></i>
@@ -1197,30 +1335,52 @@
     });
   });
 
-  // ---------- Testimonial slider ----------
-  const testiSlides = document.querySelectorAll('.testi-slide');
-  const testiDots = document.querySelectorAll('.testi-dot');
-  let testiIndex = 0;
-  let testiTimer;
+// ---------- Testimonial slider baru ----------
+const testiCards = document.querySelectorAll('.testi-card');
+const testiDotsNew = document.querySelectorAll('.testi-dot');
+const testiTrack = document.getElementById('testi-track');
+let testiIdxNew = 0;
+let testiAutoTimer;
+const totalTesti = testiCards.length;
 
-  function goToTesti(i) {
-    testiSlides.forEach(s => s.classList.remove('active'));
-    testiDots.forEach(d => d.classList.remove('active'));
-    testiSlides[i].classList.add('active');
-    testiDots[i].classList.add('active');
-    testiIndex = i;
-    resetTestiTimer();
-  }
+function goToTestiNew(i) {
+  testiIdxNew = (i + totalTesti) % totalTesti;
 
-  function nextTesti() {
-    goToTesti((testiIndex + 1) % testiSlides.length);
-  }
+  testiCards.forEach((card, idx) => {
+    const diff = idx - testiIdxNew;
+    if (diff === 0) {
+      card.style.opacity = '1';
+      card.style.transform = 'scale(1)';
+      card.style.filter = 'blur(0px)';
+    } else if (Math.abs(diff) === 1 || (testiIdxNew === 0 && idx === totalTesti - 1) || (testiIdxNew === totalTesti - 1 && idx === 0)) {
+      card.style.opacity = '0.3';
+      card.style.transform = 'scale(0.88)';
+      card.style.filter = 'blur(1.5px)';
+    } else {
+      card.style.opacity = '0.1';
+      card.style.transform = 'scale(0.8)';
+      card.style.filter = 'blur(2px)';
+    }
+  });
 
-  function resetTestiTimer() {
-    clearInterval(testiTimer);
-    testiTimer = setInterval(nextTesti, 5000);
-  }
-  resetTestiTimer();
+  testiDotsNew.forEach((d, idx) => {
+    d.classList.toggle('active', idx === testiIdxNew);
+  });
+
+  testiTrack.style.transform = `translateX(calc(-${testiIdxNew * 100}% / ${totalTesti} * ${totalTesti}))`;
+
+  resetTestiAuto();
+}
+
+function resetTestiAuto() {
+  clearInterval(testiAutoTimer);
+  testiAutoTimer = setInterval(() => goToTestiNew(testiIdxNew + 1), 5000);
+}
+
+document.getElementById('testi-prev').addEventListener('click', () => goToTestiNew(testiIdxNew - 1));
+document.getElementById('testi-next').addEventListener('click', () => goToTestiNew(testiIdxNew + 1));
+
+goToTestiNew(0);
 
   // ---------- Contact form submit ----------
   document.getElementById('contact-form').addEventListener('submit', function (e) {
