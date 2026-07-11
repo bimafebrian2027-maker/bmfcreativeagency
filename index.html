@@ -385,6 +385,7 @@
   border:1px solid var(--card-border);
   border-radius:14px;
   padding:0.75rem;
+  cursor:pointer;
   transition:all 0.35s cubic-bezier(0.16,1,0.3,1);
 }
 .photo-testi-card:hover{
@@ -1042,29 +1043,29 @@
         <p class="font-mono text-[0.65rem] tracking-[0.25em] text-white/30 mb-5 uppercase">Real Results, Real Clients</p>
 
         <div class="flex flex-col gap-4">
-          <div class="photo-testi-card">
-            <img src="testimoni/testi-mtcrthq-duo.png" alt="MTCRT.HQ Racing Team" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
-            <div class="photo-testi-body">
-              <p class="font-syne font-bold text-white text-sm">MTCRT.HQ Racing Team</p>
-              <p class="text-white/50 text-xs mt-1 leading-relaxed">Tim balap asal Sawahlunto dengan livery MX King & GTR hasil desain BMF.Visual.</p>
-            </div>
-          </div>
+          <div class="photo-testi-card" onclick="openPhotoTesti('testimoni/testi-mtcrthq-duo.png','MTCRT.HQ Racing Team','Tim balap asal Sawahlunto dengan livery MX King & GTR hasil desain BMF.Visual.')">
+  <img src="testimoni/testi-mtcrthq-duo.png" alt="MTCRT.HQ Racing Team" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
+  <div class="photo-testi-body">
+    <p class="font-syne font-bold text-white text-sm">MTCRT.HQ Racing Team</p>
+    <p class="text-white/50 text-xs mt-1 leading-relaxed">Tim balap asal Sawahlunto dengan livery MX King & GTR hasil desain BMF.Visual.</p>
+  </div>
+</div>
 
-          <div class="photo-testi-card">
-            <img src="testimoni/testi-ninja-trijaya.png" alt="Trijaya Motor Padang" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
-            <div class="photo-testi-body">
-              <p class="font-syne font-bold text-white text-sm">Trijaya Motor Padang</p>
-              <p class="text-white/50 text-xs mt-1 leading-relaxed">Livery Ninja drag race garapan bengkel Trijaya Motor, Kota Padang, Sumatera Barat.</p>
-            </div>
-          </div>
+<div class="photo-testi-card" onclick="openPhotoTesti('testimoni/testi-ninja-trijaya.png','Trijaya Motor Padang','Livery Ninja drag race garapan bengkel Trijaya Motor, Kota Padang.')">
+  <img src="testimoni/testi-ninja-trijaya.png" alt="Trijaya Motor Padang" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
+  <div class="photo-testi-body">
+    <p class="font-syne font-bold text-white text-sm">Trijaya Motor Padang</p>
+    <p class="text-white/50 text-xs mt-1 leading-relaxed">Livery Ninja drag race garapan bengkel Trijaya Motor, Kota Padang.</p>
+  </div>
+</div>
 
-          <div class="photo-testi-card">
-            <img src="testimoni/testi-ridho-beat.png" alt="Ridho Dwitama" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
-            <div class="photo-testi-body">
-              <p class="font-syne font-bold text-white text-sm">Ridho Dwitama</p>
-              <p class="text-white/50 text-xs mt-1 leading-relaxed">Pembalap muda Sawahlunto, peserta event roadrace & dragrace, dengan Beat karbu dan nomor balap garapan BMF.Visual.</p>
-            </div>
-          </div>
+<div class="photo-testi-card" onclick="openPhotoTesti('testimoni/testi-ridho-beat.png','Ridho Dwitama','Pembalap muda Sawahlunto, langganan event roadrace & dragrace, dengan Beat karbu garapan BMF.Visual.')">
+  <img src="testimoni/testi-ridho-beat.png" alt="Ridho Dwitama" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
+  <div class="photo-testi-body">
+    <p class="font-syne font-bold text-white text-sm">Ridho Dwitama</p>
+    <p class="text-white/50 text-xs mt-1 leading-relaxed">Pembalap muda Sawahlunto, langganan event roadrace & dragrace, dengan Beat karbu garapan BMF.Visual.</p>
+  </div>
+</div>
         </div>
       </div>
 
@@ -1175,7 +1176,6 @@
   </div>
 </section>
 
-<!-- ================= FOOTER ================= -->
 <!-- ================= FOOTER ================= -->
 <footer style="background:var(--footer-bg); border-top:1px solid rgba(184,149,42,0.2)">
 
@@ -1318,6 +1318,18 @@
   </div>
 </div>
 
+<!-- ================= PHOTO TESTIMONI MODAL ================= -->
+<div class="modal-overlay" id="photo-testi-modal">
+  <div class="modal-box glass-card max-w-md w-full overflow-hidden" style="border-color:var(--gold-subtle)">
+    <img id="pt-modal-img" src="" alt="" class="w-full aspect-square object-cover">
+    <div class="p-6 md:p-7">
+      <h3 id="pt-modal-title" class="font-syne font-bold text-white text-lg mb-2"></h3>
+      <p id="pt-modal-desc" class="text-white/60 text-sm leading-relaxed mb-6"></p>
+      <button onclick="closeModal('photo-testi-modal')" class="btn-gold-solid font-mono text-xs w-full py-3 rounded-full tracking-wider">TUTUP</button>
+    </div>
+  </div>
+</div>
+
 <script>
   // ---------- Loading screen ----------
   window.addEventListener('load', () => {
@@ -1403,6 +1415,14 @@
     document.getElementById('project-modal').classList.add('open');
   }
 
+  function openPhotoTesti(img, title, desc) {
+    document.getElementById('pt-modal-img').src = img;
+    document.getElementById('pt-modal-img').alt = title;
+    document.getElementById('pt-modal-title').textContent = title;
+    document.getElementById('pt-modal-desc').textContent = desc;
+    document.getElementById('photo-testi-modal').classList.add('open');
+  }
+  
   function closeModal(id) {
     document.getElementById(id).classList.remove('open');
   }
