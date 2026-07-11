@@ -403,9 +403,9 @@
 .photo-testi-body{ text-align:left; }
 
 .photo-testi-list{
-  display:flex;
-  flex-direction:column;
-  gap:1rem;
+  max-height:440px;
+  overflow-y:auto;
+  padding-right:6px;
 }
 .photo-testi-thumb{ position:relative; flex-shrink:0; }
 .photo-testi-count{
@@ -424,7 +424,7 @@
 .pt-slider{
   position:relative;
   width:100%;
-  aspect-ratio:3/4;
+  aspect-ratio:1/1;
   overflow:hidden;
   background:#000;
   touch-action:pan-y;
