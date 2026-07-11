@@ -402,6 +402,68 @@
 }
 .photo-testi-body{ text-align:left; }
 
+.photo-testi-list{
+  max-height:440px;
+  overflow-y:auto;
+  padding-right:6px;
+}
+.photo-testi-thumb{ position:relative; flex-shrink:0; }
+.photo-testi-count{
+  position:absolute; bottom:4px; right:4px;
+  background:rgba(10,10,10,0.75);
+  color:var(--gold-light);
+  font-family:'Scaver-Regular', serif;
+  font-size:0.55rem;
+  padding:2px 6px;
+  border-radius:20px;
+  display:flex; align-items:center; gap:3px;
+  border:1px solid rgba(184,149,42,0.3);
+}
+
+/* Photo testimoni modal slider */
+.pt-slider{
+  position:relative;
+  width:100%;
+  aspect-ratio:3/4;
+  overflow:hidden;
+  background:#000;
+  touch-action:pan-y;
+}
+.pt-slider-track{
+  display:flex;
+  height:100%;
+  transition:transform 0.4s cubic-bezier(0.16,1,0.3,1);
+}
+.pt-slider-track img{
+  width:100%; height:100%;
+  object-fit:cover;
+  flex-shrink:0;
+}
+.pt-nav{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:32px; height:32px; border-radius:50%;
+  background:rgba(10,10,10,0.55);
+  color:#fff;
+  display:flex; align-items:center; justify-content:center;
+  font-size:0.7rem;
+  border:1px solid rgba(255,255,255,0.15);
+  cursor:pointer;
+  transition:background 0.25s ease;
+}
+.pt-nav:hover{ background:rgba(184,149,42,0.85); }
+.pt-nav-prev{ left:10px; }
+.pt-nav-next{ right:10px; }
+.pt-dots{
+  position:absolute; bottom:10px; left:0; right:0;
+  display:flex; justify-content:center; gap:6px;
+}
+.pt-dots span{
+  width:6px; height:6px; border-radius:50%;
+  background:rgba(255,255,255,0.4);
+  transition:all 0.25s ease;
+}
+.pt-dots span.active{ background:var(--gold); width:16px; border-radius:3px; }
+
   /* Modal */
   .modal-overlay{
     position:fixed; inset:0; background:rgba(5,5,5,0.85);
@@ -1042,30 +1104,47 @@
       <div class="reveal">
         <p class="font-mono text-[0.65rem] tracking-[0.25em] text-white/30 mb-5 uppercase">Real Results, Real Clients</p>
 
-        <div class="flex flex-col gap-4">
-          <div class="photo-testi-card" onclick="openPhotoTesti('testimoni/testi-mtcrthq-duo.png','MTCRT.HQ Racing Team','Tim balap asal Sawahlunto dengan livery MX King & GTR hasil desain BMF.Visual.')">
-  <img src="testimoni/testi-mtcrthq-duo.png" alt="MTCRT.HQ Racing Team" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
-  <div class="photo-testi-body">
-    <p class="font-syne font-bold text-white text-sm">MTCRT.HQ Racing Team</p>
-    <p class="text-white/50 text-xs mt-1 leading-relaxed">Tim balap asal Sawahlunto dengan livery MX King & GTR hasil desain BMF.Visual.</p>
-  </div>
-</div>
+        <div class="photo-testi-list" id="photo-testi-list">
+          <div class="photo-testi-card" onclick="openPhotoTesti(0)">
+            <div class="photo-testi-thumb">
+              <img src="testimoni/testi-mtcrthq-1.png" alt="MTCRT.HQ Racing Team" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
+              <span class="photo-testi-count"><i class="fa-solid fa-images"></i> 4</span>
+            </div>
+            <div class="photo-testi-body">
+              <p class="font-syne font-bold text-white text-sm">MTCRT.HQ Racing Team</p>
+              <p class="text-white/50 text-xs mt-1 leading-relaxed">Tim balap asal Sawahlunto dengan livery MX King & GTR hasil desain BMF.Visual.</p>
+            </div>
+          </div>
 
-<div class="photo-testi-card" onclick="openPhotoTesti('testimoni/testi-ninja-trijaya.png','Trijaya Motor Padang','Livery Ninja drag race garapan bengkel Trijaya Motor, Kota Padang.')">
-  <img src="testimoni/testi-ninja-trijaya.png" alt="Trijaya Motor Padang" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
-  <div class="photo-testi-body">
-    <p class="font-syne font-bold text-white text-sm">Trijaya Motor Padang</p>
-    <p class="text-white/50 text-xs mt-1 leading-relaxed">Livery Ninja drag race garapan bengkel Trijaya Motor, Kota Padang.</p>
-  </div>
-</div>
+          <div class="photo-testi-card" onclick="openPhotoTesti(1)">
+            <div class="photo-testi-thumb">
+              <img src="testimoni/testi-ninja-trijaya.jpeg" alt="Trijaya Motor Padang" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
+            </div>
+            <div class="photo-testi-body">
+              <p class="font-syne font-bold text-white text-sm">Trijaya Motor Padang</p>
+              <p class="text-white/50 text-xs mt-1 leading-relaxed">Livery Ninja drag race garapan bengkel Trijaya Motor, Kota Padang.</p>
+            </div>
+          </div>
 
-<div class="photo-testi-card" onclick="openPhotoTesti('testimoni/testi-ridho-beat.png','Ridho Dwitama','Pembalap muda Sawahlunto, langganan event roadrace & dragrace, dengan Beat karbu garapan BMF.Visual.')">
-  <img src="testimoni/testi-ridho-beat.png" alt="Ridho Dwitama" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
-  <div class="photo-testi-body">
-    <p class="font-syne font-bold text-white text-sm">Ridho Dwitama</p>
-    <p class="text-white/50 text-xs mt-1 leading-relaxed">Pembalap muda Sawahlunto, langganan event roadrace & dragrace, dengan Beat karbu garapan BMF.Visual.</p>
-  </div>
-</div>
+          <div class="photo-testi-card" onclick="openPhotoTesti(2)">
+            <div class="photo-testi-thumb">
+              <img src="testimoni/testi-ridho-beat.png" alt="Ridho Dwitama" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
+            </div>
+            <div class="photo-testi-body">
+              <p class="font-syne font-bold text-white text-sm">Ridho Dwitama</p>
+              <p class="text-white/50 text-xs mt-1 leading-relaxed">Pembalap muda Sawahlunto, langganan event roadrace & dragrace, dengan Beat karbu garapan BMF.Visual.</p>
+            </div>
+          </div>
+
+          <div class="photo-testi-card" onclick="openPhotoTesti(3)">
+            <div class="photo-testi-thumb">
+              <img src="testimoni/testi-rodaduaswl.jpeg" alt="Rodaduaswl" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
+            </div>
+            <div class="photo-testi-body">
+              <p class="font-syne font-bold text-white text-sm">Rodaduaswl</p>
+              <p class="text-white/50 text-xs mt-1 leading-relaxed">Desain stiker custom motor garapan BMF.Visual untuk komunitas roda dua Sawahlunto.</p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -1321,7 +1400,12 @@
 <!-- ================= PHOTO TESTIMONI MODAL ================= -->
 <div class="modal-overlay" id="photo-testi-modal">
   <div class="modal-box glass-card max-w-md w-full overflow-y-auto" style="border-color:var(--gold-subtle); max-height:90vh;">
-    <img id="pt-modal-img" src="" alt="" class="w-full aspect-[4/3] object-cover">
+    <div class="pt-slider" id="pt-slider">
+      <div class="pt-slider-track" id="pt-slider-track"></div>
+      <button class="pt-nav pt-nav-prev" onclick="ptSlide(-1)" aria-label="Sebelumnya"><i class="fa-solid fa-chevron-left"></i></button>
+      <button class="pt-nav pt-nav-next" onclick="ptSlide(1)" aria-label="Selanjutnya"><i class="fa-solid fa-chevron-right"></i></button>
+      <div class="pt-dots" id="pt-dots"></div>
+    </div>
     <div class="p-6 md:p-7">
       <h3 id="pt-modal-title" class="font-syne font-bold text-white text-lg mb-2"></h3>
       <p id="pt-modal-desc" class="text-white/60 text-sm leading-relaxed mb-6"></p>
@@ -1415,13 +1499,81 @@
     document.getElementById('project-modal').classList.add('open');
   }
 
-  function openPhotoTesti(img, title, desc) {
-    document.getElementById('pt-modal-img').src = img;
-    document.getElementById('pt-modal-img').alt = title;
-    document.getElementById('pt-modal-title').textContent = title;
-    document.getElementById('pt-modal-desc').textContent = desc;
+  const testiPhotoData = [
+    {
+      title: 'MTCRT.HQ Racing Team',
+      desc: 'Tim balap asal Sawahlunto dengan livery MX King & GTR hasil desain BMF.Visual.',
+      images: [
+        'testimoni/testi-mtcrthq-1.png',
+        'testimoni/testi-mtcrthq-2.png',
+        'testimoni/testi-mtcrthq-3.png',
+        'testimoni/testi-mtcrthq-4.jpeg'
+      ]
+    },
+    {
+      title: 'Trijaya Motor Padang',
+      desc: 'Livery Ninja drag race garapan bengkel Trijaya Motor, Kota Padang.',
+      images: ['testimoni/testi-ninja-trijaya.jpeg']
+    },
+    {
+      title: 'Ridho Dwitama',
+      desc: 'Pembalap muda Sawahlunto, langganan event roadrace & dragrace, dengan Beat karbu garapan BMF.Visual.',
+      images: ['testimoni/testi-ridho-beat.png']
+    },
+    {
+      title: 'Rodaduaswl',
+      desc: 'Desain stiker custom motor garapan BMF.Visual untuk komunitas roda dua Sawahlunto.',
+      images: ['testimoni/testi-rodaduaswl.jpeg']
+    }
+  ];
+
+  let ptImages = [];
+  let ptIndex = 0;
+
+  function openPhotoTesti(dataIndex) {
+    const data = testiPhotoData[dataIndex];
+    ptImages = data.images;
+    ptIndex = 0;
+    document.getElementById('pt-modal-title').textContent = data.title;
+    document.getElementById('pt-modal-desc').textContent = data.desc;
+    renderPtSlider();
     document.getElementById('photo-testi-modal').classList.add('open');
   }
+
+  function renderPtSlider() {
+    const track = document.getElementById('pt-slider-track');
+    const dotsWrap = document.getElementById('pt-dots');
+    track.innerHTML = ptImages.map(src => `<img src="${src}" alt="">`).join('');
+    dotsWrap.innerHTML = ptImages.map((_, idx) => `<span class="${idx === ptIndex ? 'active' : ''}"></span>`).join('');
+    const showNav = ptImages.length > 1;
+    document.querySelectorAll('.pt-nav').forEach(n => n.style.display = showNav ? 'flex' : 'none');
+    dotsWrap.style.display = showNav ? 'flex' : 'none';
+    updatePtPosition();
+  }
+
+  function updatePtPosition() {
+    document.getElementById('pt-slider-track').style.transform = `translateX(-${ptIndex * 100}%)`;
+    document.querySelectorAll('#pt-dots span').forEach((d, idx) => d.classList.toggle('active', idx === ptIndex));
+  }
+
+  function ptSlide(dir) {
+    if (ptImages.length <= 1) return;
+    ptIndex = (ptIndex + dir + ptImages.length) % ptImages.length;
+    updatePtPosition();
+  }
+
+  // Swipe kiri/kanan untuk mobile
+  (function () {
+    const el = document.getElementById('pt-slider');
+    let startX = 0, isDown = false;
+    el.addEventListener('pointerdown', e => { isDown = true; startX = e.clientX; });
+    el.addEventListener('pointerup', e => {
+      if (!isDown) return;
+      isDown = false;
+      const diff = e.clientX - startX;
+      if (Math.abs(diff) > 40) ptSlide(diff < 0 ? 1 : -1);
+    });
+  })();
   
   function closeModal(id) {
     document.getElementById(id).classList.remove('open');
