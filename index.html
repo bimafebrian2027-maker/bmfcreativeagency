@@ -318,25 +318,30 @@
   font-family:'Fraunces', serif;
   position:absolute;
   top:0.5rem; left:1.5rem;
-  font-size:5rem;
+  font-size:3.2rem;
   color:rgba(184,149,42,0.15);
   line-height:1;
   pointer-events:none;
 }
   
   /* Testimonial */
+.testi-col-left{
+  position:relative;
+  overflow:hidden;
+  border-radius:16px;
+}
   #testi-viewport{
   position:relative;
-  max-width:560px;
+  max-width:100%;
   margin:0 auto;
-  min-height:300px;
+  min-height:280px;
   overflow:visible;
 }
 .testi-card{
   position:absolute;
   top:0; left:50%;
   width:100%;
-  padding:3rem 2rem 2.5rem;
+  padding:2.25rem 1.5rem 1.75rem;
   background:var(--bg-card);
   border:1px solid var(--card-border);
   border-top:2px solid var(--gold);
@@ -372,6 +377,29 @@
 @media (max-width:767px){
   .testi-card.is-prev, .testi-card.is-next{ opacity:0 !important; }
 }
+
+/* Photo proof testimonials (kanan) */
+.photo-testi-card{
+  display:flex; align-items:center; gap:1rem;
+  background:var(--bg-card);
+  border:1px solid var(--card-border);
+  border-radius:14px;
+  padding:0.75rem;
+  transition:all 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.photo-testi-card:hover{
+  transform:translateY(-3px);
+  border-color:rgba(184,149,42,0.35);
+  box-shadow:0 8px 24px rgba(0,0,0,0.25);
+}
+.photo-testi-img{
+  width:76px; height:76px;
+  border-radius:10px;
+  object-fit:cover;
+  flex-shrink:0;
+  border:1px solid rgba(184,149,42,0.2);
+}
+.photo-testi-body{ text-align:left; }
 
   /* Modal */
   .modal-overlay{
@@ -946,61 +974,106 @@
 <!-- ================= TESTIMONIALS ================= -->
 <section id="testimonials" class="py-14 md:py-20 relative overflow-hidden" style="background:var(--bg-secondary)">
 
-  <div class="max-w-3xl mx-auto px-5 md:px-8 relative z-10 text-center reveal">
-    <span class="font-mono text-xs tracking-[0.3em]" style="color:var(--gold)">TESTIMONIALS</span>
-    <h2 class="font-fraunces italic text-3xl md:text-4xl text-white mt-4 mb-12">What Clients Say?</h2>
+  <div class="max-w-6xl mx-auto px-5 md:px-8 relative z-10 reveal">
 
-    <div id="testi-viewport">
-      <div class="testi-card" data-index="0" style="width:800px; max-width:90vw;">
-        <span class="testi-quote-mark">"</span>
-        <div class="flex justify-center gap-1 mb-6">
-          <i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i>
-        </div>
-        <p class="font-outfit text-white/80 text-base md:text-lg leading-relaxed mb-3 mt-8">Sebagai klien setia sejak awal berdirinya bmf.creative, saya telah memercayakan berbagai proyek desain logo dan branding kepada tim ini. Dari proyek pertama hingga beberapa proyek setelahnya, kualitas kerja yang dihasilkan selalu konsisten dan luar biasa. Tim ini tidak hanya kreatif, tetapi juga mampu menerjemahkan visi bisnis menjadi karya visual yang kuat. Sangat puas dengan dedikasi dan profesionalisme mereka.</p>
-        <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">ZACKKIY</p>
-        <p class="font-outfit text-white/40 text-xs mt-1">founder of mtcrt racing team</p>
-      </div>
-
-      <div class="testi-card" data-index="1">
-        <span class="testi-quote-mark">"</span>
-        <div class="flex justify-center gap-1 mb-6">
-          <i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i>
-        </div>
-        <p class="font-outfit text-white/80 text-base md:text-lg leading-relaxed mb-3 mt-8">Tim BMF Webdesign membangun website perusahaan kami dengan tampilan premium dan navigasi yang jelas dan membuat kami sekarang jauh lebih mudah menampilkan dan menjelaskan produk ke calon klien.</p>
-        <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">KARINA WAHYUNI</p>
-        <p class="font-outfit text-white/40 text-xs mt-1">Direktur, Luxury Coffe Home Padang</p>
-      </div>
-
-      <div class="testi-card" data-index="2">
-        <span class="testi-quote-mark">"</span>
-        <div class="flex justify-center gap-1 mb-6">
-          <i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i>
-        </div>
-        <p class="font-outfit text-white/80 text-base md:text-lg leading-relaxed mb-3 mt-8">Desain yang saya buat di BMF sangat bagus dan detailnya sangat keren. Harapannya semoga agensi ini tetap konsisten terus sampai kedepannya.</p>
-        <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">HAIKAL ERDI ARRASYID</p>
-        <p class="font-outfit text-white/40 text-xs mt-1">Owner Garasebunda</p>
-      </div>
-
-      <div class="testi-card" data-index="3">
-        <span class="testi-quote-mark">"</span>
-        <div class="flex justify-center gap-1 mb-6">
-          <i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i><i class="fa-solid fa-star" style="color:var(--gold)"></i>
-        </div>
-        <p class="font-outfit text-white/80 text-base md:text-lg leading-relaxed mb-3 mt-8">Hasil foto dari BMF Automedia sangat presisi menurut saya, walaupun menggunakan android namun setiap detail modifikasi kendaraan kami tertangkap dengan pencahayaan yang pas dan profesional.</p>
-        <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">HENDRA PURNOMO</p>
-        <p class="font-outfit text-white/40 text-xs mt-1">Participant Turbo Clash Padang 2026</p>
-      </div>
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <span class="font-mono text-xs tracking-[0.3em]" style="color:var(--gold)">TESTIMONIALS</span>
+      <h2 class="font-fraunces italic text-3xl md:text-4xl text-white mt-4">What Clients Say?</h2>
     </div>
 
-    <div class="flex justify-center gap-2 mt-10" id="testi-dots">
-      <div class="testi-dot active" onclick="goToTesti(0)"></div>
-      <div class="testi-dot" onclick="goToTesti(1)"></div>
-      <div class="testi-dot" onclick="goToTesti(2)"></div>
-      <div class="testi-dot" onclick="goToTesti(3)"></div>
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+
+      <!-- KIRI: Quote carousel -->
+      <div>
+        <div class="testi-col-left">
+          <div id="testi-viewport">
+            <div class="testi-card" data-index="0">
+              <span class="testi-quote-mark">"</span>
+              <div class="flex justify-center gap-1 mb-4">
+                <i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i>
+              </div>
+              <p class="font-outfit text-white/80 text-sm leading-relaxed mb-3 mt-6">Sebagai klien setia sejak awal berdirinya bmf.creative, saya telah memercayakan berbagai proyek desain logo dan branding kepada tim ini. Dari proyek pertama hingga beberapa proyek setelahnya, kualitas kerja yang dihasilkan selalu konsisten dan luar biasa. Tim ini tidak hanya kreatif, tetapi juga mampu menerjemahkan visi bisnis menjadi karya visual yang kuat. Sangat puas dengan dedikasi dan profesionalisme mereka.</p>
+              <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">ZACKKIY</p>
+              <p class="font-outfit text-white/40 text-xs mt-1">founder of mtcrt racing team</p>
+            </div>
+
+            <div class="testi-card" data-index="1">
+              <span class="testi-quote-mark">"</span>
+              <div class="flex justify-center gap-1 mb-4">
+                <i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i>
+              </div>
+              <p class="font-outfit text-white/80 text-sm leading-relaxed mb-3 mt-6">Tim BMF Webdesign membangun website perusahaan kami dengan tampilan premium dan navigasi yang jelas dan membuat kami sekarang jauh lebih mudah menampilkan dan menjelaskan produk ke calon klien.</p>
+              <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">KARINA WAHYUNI</p>
+              <p class="font-outfit text-white/40 text-xs mt-1">Direktur, Luxury Coffe Home Padang</p>
+            </div>
+
+            <div class="testi-card" data-index="2">
+              <span class="testi-quote-mark">"</span>
+              <div class="flex justify-center gap-1 mb-4">
+                <i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i>
+              </div>
+              <p class="font-outfit text-white/80 text-sm leading-relaxed mb-3 mt-6">Desain yang saya buat di BMF sangat bagus dan detailnya sangat keren. Harapannya semoga agensi ini tetap konsisten terus sampai kedepannya.</p>
+              <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">HAIKAL ERDI ARRASYID</p>
+              <p class="font-outfit text-white/40 text-xs mt-1">Owner Garasebunda</p>
+            </div>
+
+            <div class="testi-card" data-index="3">
+              <span class="testi-quote-mark">"</span>
+              <div class="flex justify-center gap-1 mb-4">
+                <i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i><i class="fa-solid fa-star text-xs" style="color:var(--gold)"></i>
+              </div>
+              <p class="font-outfit text-white/80 text-sm leading-relaxed mb-3 mt-6">Hasil foto dari BMF Automedia sangat presisi menurut saya, walaupun menggunakan android namun setiap detail modifikasi kendaraan kami tertangkap dengan pencahayaan yang pas dan profesional.</p>
+              <p class="font-mono font-bold text-xs tracking-[0.2em]" style="color:var(--gold)">HENDRA PURNOMO</p>
+              <p class="font-outfit text-white/40 text-xs mt-1">Participant Turbo Clash Padang 2026</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex justify-center gap-2 mt-6" id="testi-dots">
+          <div class="testi-dot active" onclick="goToTesti(0)"></div>
+          <div class="testi-dot" onclick="goToTesti(1)"></div>
+          <div class="testi-dot" onclick="goToTesti(2)"></div>
+          <div class="testi-dot" onclick="goToTesti(3)"></div>
+        </div>
+      </div>
+
+      <!-- KANAN: Foto bukti nyata -->
+      <div class="reveal">
+        <p class="font-mono text-[0.65rem] tracking-[0.25em] text-white/30 mb-5 uppercase">Real Results, Real Clients</p>
+
+        <div class="flex flex-col gap-4">
+          <div class="photo-testi-card">
+            <img src="testimoni/testi-mtcrthq-duo.png" alt="MTCRT.HQ Racing Team" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
+            <div class="photo-testi-body">
+              <p class="font-syne font-bold text-white text-sm">MTCRT.HQ Racing Team</p>
+              <p class="text-white/50 text-xs mt-1 leading-relaxed">Tim balap asal Sawahlunto dengan livery MX King & GTR hasil desain BMF.Visual.</p>
+            </div>
+          </div>
+
+          <div class="photo-testi-card">
+            <img src="testimoni/testi-ninja-trijaya.png" alt="Trijaya Motor Padang" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
+            <div class="photo-testi-body">
+              <p class="font-syne font-bold text-white text-sm">Trijaya Motor Padang</p>
+              <p class="text-white/50 text-xs mt-1 leading-relaxed">Livery Ninja drag race garapan bengkel Trijaya Motor, Kota Padang, Sumatera Barat.</p>
+            </div>
+          </div>
+
+          <div class="photo-testi-card">
+            <img src="testimoni/testi-ridho-beat.png" alt="Ridho Dwitama" class="photo-testi-img" onerror="this.classList.add('img-fallback')">
+            <div class="photo-testi-body">
+              <p class="font-syne font-bold text-white text-sm">Ridho Dwitama</p>
+              <p class="text-white/50 text-xs mt-1 leading-relaxed">Pembalap muda Sawahlunto, peserta event roadrace & dragrace, dengan Beat karbu dan nomor balap garapan BMF.Visual.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <p class="font-outfit text-xs text-white/40 mt-12">Pernah menggunakan layanan kami?</p>
-    <a href="https://forms.gle/m1LHao2rJjB6qiSx6" target="_blank" rel="noopener" class="inline-block btn-gold-outline font-mono text-xs px-6 py-3 rounded-full mt-4 tracking-wider">BERIKAN TESTIMONI</a>
+    <div class="text-center mt-14">
+      <p class="font-outfit text-xs text-white/40">Pernah menggunakan layanan kami?</p>
+      <a href="https://forms.gle/m1LHao2rJjB6qiSx6" target="_blank" rel="noopener" class="inline-block btn-gold-outline font-mono text-xs px-6 py-3 rounded-full mt-4 tracking-wider">BERIKAN TESTIMONI</a>
+    </div>
   </div>
 </section>
   
