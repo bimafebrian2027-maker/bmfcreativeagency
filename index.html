@@ -1179,22 +1179,22 @@
       <form id="contact-form" class="space-y-5">
         <div>
           <label class="font-mono text-[0.65rem] text-white/40 tracking-wider mb-2 block">NAMA LENGKAP</label>
-          <input type="text" required class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="Nama Anda">
+          <input type="text" name="nama" required class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="Nama Anda">
         </div>
         <div class="grid sm:grid-cols-2 gap-5">
           <div>
             <label class="font-mono text-[0.65rem] text-white/40 tracking-wider mb-2 block">EMAIL</label>
-            <input type="email" required class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="email@domain.com">
+            <input type="email" name="email" required class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="creativeagencybmf@gmail.com">
           </div>
           <div>
             <label class="font-mono text-[0.65rem] text-white/40 tracking-wider mb-2 block">WHATSAPP</label>
-            <input type="tel" required class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="08xx-xxxx-xxxx">
+            <input type="tel" name="whatsapp" required class="form-input w-full rounded-lg px-4 py-3 text-sm" placeholder="0877-4423-2552">
           </div>
         </div>
         <div class="grid sm:grid-cols-2 gap-5">
           <div>
             <label class="font-mono text-[0.65rem] text-white/40 tracking-wider mb-2 block">PILIH LAYANAN</label>
-            <select class="form-input w-full rounded-lg px-4 py-3 text-sm">
+            <select name="layanan" class="form-input w-full rounded-lg px-4 py-3 text-sm">
               <option>Automedia</option>
               <option>Visual</option>
               <option>Webdesign</option>
@@ -1203,7 +1203,7 @@
           </div>
           <div>
             <label class="font-mono text-[0.65rem] text-white/40 tracking-wider mb-2 block">PERKIRAAN BUDGET</label>
-            <select class="form-input w-full rounded-lg px-4 py-3 text-sm">
+            <select name="budget" class="form-input w-full rounded-lg px-4 py-3 text-sm">
               <option>&lt; Rp100rb</option>
               <option>Rp100rb – 500rb</option>
               <option>Rp500rb – 2jt</option>
@@ -1213,7 +1213,7 @@
         </div>
         <div>
           <label class="font-mono text-[0.65rem] text-white/40 tracking-wider mb-2 block">PESAN</label>
-          <textarea rows="4" required class="form-input w-full rounded-lg px-4 py-3 text-sm resize-none" placeholder="Ceritakan kebutuhan proyek Anda..."></textarea>
+          <textarea rows="4" name="pesan" required class="form-input w-full rounded-lg px-4 py-3 text-sm resize-none" placeholder="Ceritakan kebutuhan proyek Anda..."></textarea>
         </div>
         <button type="submit" class="btn-gold-solid font-mono text-xs w-full py-4 rounded-lg tracking-wider">KIRIM PENAWARAN</button>
       </form>
@@ -1641,10 +1641,41 @@ renderTesti();
 resetTestiTimer();
 
   // ---------- Contact form submit ----------
-  document.getElementById('contact-form').addEventListener('submit', function (e) {
+  document.getElementById('contact-form').addEventListener('submit', async function (e) {
     e.preventDefault();
+    const form = this;
+    const data = {
+      nama: form.nama.value,
+      email: form.email.value,
+      whatsapp: form.whatsapp.value,
+      layanan: form.layanan.value,
+      budget: form.budget.value,
+      pesan: form.pesan.value
+    };
+
+    try {
+      await fetch('https://formsubmit.co/ajax/creativeagencybmf@gmail.com', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+    } catch (err) {
+      console.error('Gagal kirim ke email:', err);
+    }
+
+    const waMessage =
+      `Halo BMF Creative, saya ingin konsultasi proyek:%0A%0A` +
+      `Nama: ${data.nama}%0A` +
+      `Email: ${data.email}%0A` +
+      `WhatsApp: ${data.whatsapp}%0A` +
+      `Layanan: ${data.layanan}%0A` +
+      `Budget: ${data.budget}%0A` +
+      `Pesan: ${data.pesan}`;
+
+    window.open(`https://wa.me/6287744232552?text=${waMessage}`, '_blank');
+
     document.getElementById('success-modal').classList.add('open');
-    this.reset();
+    form.reset();
   });
 </script>
 
